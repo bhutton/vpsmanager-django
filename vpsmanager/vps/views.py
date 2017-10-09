@@ -6,3 +6,9 @@ from django.core.exceptions import ValidationError
 
 def home_page(request):
     return render(request, 'home.html')
+
+def create_vps(request):
+    return render(request, 'createvps.html')
+
+def create_user(request):
+    return render(request, 'createuser.html')

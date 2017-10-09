@@ -20,6 +20,8 @@ from vps import views
 
 
 urlpatterns = [
-url(r'^$', views.home_page, name='home'),
+    url(r'^$', views.home_page, name='home'),
+    url(r'^createvps/', views.create_vps, name='createvps'),
+    url(r'^createuser/', views.create_user, name='createuser'),
     url(r'^admin/', admin.site.urls),
 ]
