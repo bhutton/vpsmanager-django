@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="35e188a7-ed6e-4e54-94b6-794ef66dfa62" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vpsmanager/tests/test_models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vpsmanager/vps/models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vpsmanager/vps/templates/createuser.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vpsmanager/vps/templates/createvps.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/functional_tests.py" afterPath="$PROJECT_DIR$/functional_tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vpsmanager/tests/test_views.py" afterPath="$PROJECT_DIR$/vpsmanager/tests/test_views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vpsmanager/views.py" afterPath="$PROJECT_DIR$/vpsmanager/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vpsmanager/vps/templates/home.html" afterPath="$PROJECT_DIR$/vpsmanager/vps/templates/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vpsmanager/vps/views.py" afterPath="$PROJECT_DIR$/vpsmanager/vps/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vpsmanager/vpsmanager/urls.py" afterPath="$PROJECT_DIR$/vpsmanager/vpsmanager/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vpsmanager/vps/models.py" afterPath="$PROJECT_DIR$/vpsmanager/vps/models.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -74,11 +65,9 @@
       <file leaf-file-name="test_models.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/vpsmanager/tests/test_models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="33" lean-forward="true" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
-              <folding>
-                <element signature="e#0#51#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="30">
+              <caret line="2" column="1" lean-forward="true" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -86,11 +75,9 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vpsmanager/vps/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="23" lean-forward="false" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="0">
+              <caret line="0" column="1" lean-forward="false" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -170,10 +157,10 @@
         <option value="$PROJECT_DIR$/vpsmanager/vpsmanager/urls.py" />
         <option value="$PROJECT_DIR$/vpsmanager/vps/templates/createvps.html" />
         <option value="$PROJECT_DIR$/vpsmanager/vps/templates/createuser.html" />
-        <option value="$PROJECT_DIR$/vpsmanager/vps/models.py" />
-        <option value="$PROJECT_DIR$/vpsmanager/tests/test_models.py" />
         <option value="$PROJECT_DIR$/vpsmanager/tests/test_views.py" />
         <option value="$PROJECT_DIR$/functional_tests.py" />
+        <option value="$PROJECT_DIR$/vpsmanager/vps/models.py" />
+        <option value="$PROJECT_DIR$/vpsmanager/tests/test_models.py" />
       </list>
     </option>
   </component>
@@ -384,7 +371,28 @@
       <option name="project" value="LOCAL" />
       <updated>1507511282596</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Create view for createuser">
+      <created>1507543045357</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1507543045357</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added test for iterable for vps_list model">
+      <created>1507549542932</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1507549542932</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Extended createvps test">
+      <created>1507549582883</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1507549582883</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -456,11 +464,21 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Setup unittest framework.&#10;Created view for homepage." />
     <MESSAGE value="Create view for createvps" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create view for createvps" />
+    <MESSAGE value="Create view for createuser" />
+    <MESSAGE value="Added test for iterable for vps_list model" />
+    <MESSAGE value="Extended createvps test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Extended createvps test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/vpsmanager/tests/test_models.py</url>
+          <line>14</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -696,12 +714,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vpsmanager/vps/models.py">
+    <entry file="file://$PROJECT_DIR$/functional_tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="23" lean-forward="false" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
+        <state relative-caret-position="225">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -716,23 +734,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/functional_tests.py">
+    <entry file="file://$PROJECT_DIR$/vpsmanager/vps/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="1" lean-forward="false" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vpsmanager/tests/test_models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="33" lean-forward="true" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="30">
+          <caret line="2" column="1" lean-forward="true" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
