@@ -6,9 +6,6 @@ from django.utils.html import escape
 
 from vps.views import home_page
 
-
-from unittest import skip
-
 class HomePageTest(TestCase):
 
     def test_home_page_renders_homepage(self):
@@ -26,3 +23,13 @@ class CreateVPSTest(TestCase):
     def test_create_vps_renders_form(self):
         response = self.client.get('/createvps/')
         self.assertTemplateUsed(response, 'createvps.html')
+        expected_html = render_to_string('createvps.html')
+        self.assertEqual(response.content.decode(), expected_html)
+
+class CreateUserTest(TestCase):
+
+    def test_create_user_renders_form(self):
+        response = self.client.get('/createuser/')
+        self.assertTemplateUsed(response, 'createuser.html')
+        expected_html = render_to_string('createuser.html')
+        self.assertEqual(response.content.decode(), expected_html)
