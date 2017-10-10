@@ -1,8 +1,6 @@
 from django.template.loader import render_to_string
-from django.core.urlresolvers import resolve
 from django.test import TestCase
 from django.http import HttpRequest
-from django.utils.html import escape
 
 from vps.views import home_page
 
