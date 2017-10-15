@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create VPS</title>
+</head>
+<body>
+    <form method="POST">
+        <input name="item_name" id="id_item_name" placeholder="Enter a to-do item" />
+        {% csrf_token %}
+    </form>
+</body>
+</html>
