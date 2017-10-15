@@ -21,19 +21,20 @@ class HomePageTest(TestCase):
     def test_home_page_contains_list_table(self):
         request = HttpRequest()
         response = home_page(request)
-        self.assertIn('id_list_table', response.content.decode())
+        self.assertIn('VPS Manager', response.content.decode())
 
     def test_home_page_contains_list_items(self):
         response = self.client.get('/vps/create/')
         self.assertTemplateUsed(response, 'createvps.html')
-        self.assertIn('Enter a to-do item', response.content.decode())
+        self.assertTemplateUsed(response, 'base.html')
+        self.assertIn('Enter Instance Name', response.content.decode())
 
 class CreateVPSTest(TestCase):
 
     def test_create_vps_renders_form(self):
         response = self.client.get('/vps/create/')
         self.assertTemplateUsed(response, 'createvps.html')
-        self.assertIn('Enter a to-do item', response.content.decode())
+        self.assertIn('Enter Instance Name', response.content.decode())
 
     def test_vps_user_can_save_a_POST_request(self):
         response = self.client.post('/vps/create/', data={'item_name': 'A new list item'})

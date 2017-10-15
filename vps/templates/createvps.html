@@ -1,13 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Create VPS</title>
-</head>
-<body>
-    <form method="POST">
-        <input name="item_name" id="id_item_name" placeholder="Enter a to-do item" />
+{% extends "base.html" %}
+
+{% block content %}
+    <a href="/"><i class="material-icons md-18">keyboard_backspace</i></a>
+
+    <div class="container">
+
+    <form name="vps" method="POST" class="form-horizontal">
+
+        <div class="form-group row">
+
+          <label for="name" class="col-sm-4 control-label">Name</label>
+          <div class="col-sm-7">
+            <!--<input type="text" name="name" class="form-control" required autofocus onchange="return validateVPSName()">-->
+              <input class="form-control" name="item_name" id="id_item_name" placeholder="Enter Instance Name" />
+            <p id="valName"></p></td>
+          </div>
+
+        </div>
+
+        <div class="form-group row">
+          <label for="description" class="col-sm-4 control-label">Description</label>
+          <div class="col-sm-7">
+            <input type="text" name="description" class="form-control" required onchange="return validateVPSDescription()"></td>
+            <p id="valDescription"></p></td>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="image" class="col-sm-4 control-label">Image</label>
+          <div class="col-sm-7">
+            <select name="image" class="form-control">
+              <option value="1">FreeBSD</option>
+              <option value="2">Ubuntu</option>
+              <option value="3">Centos</option>
+              <option value="4">Windows10</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="ram" class="col-sm-4 control-label">Memory</label>
+          <div class="col-sm-7">
+            <select name="ram" class="form-control">
+                <option>512MB</option>
+                <option>1GB</option>
+                <option>2GB</option>
+              </select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="disk" class="col-sm-4 control-label">Disk</label>
+          <div class="col-sm-7">
+            <select name="disk" class="form-control">
+              <option>20GB</option>
+              <option>30GB</option>
+              <option>40GB</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="bridge" class="col-sm-4 control-label">Bridge</label>
+          <div class="col-sm-7">
+            <select name="bridge" class="form-control">
+            {% for brid in bridge %}
+                <option>{{ brid.1 }}</option>
+            {% endfor %}
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="createDisk" class="col-sm-4 control-label">Create Disk</label>
+          <div class="col-sm-7">
+            <input type="checkbox" name="createDisk" class="form-control" checked>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="createPath" class="col-sm-4 control-label">Create Path</label>
+          <div class="col-sm-7">
+            <input type="checkbox" name="createPath" class="form-control" checked>
+          </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-4"></div>
+          <div class="col-sm-7">
+            <button id="btnCreateVPS" class="btn btn-lg btn-primary btn-block" type="button">Create VPS</button>
+          </div>
+        </div>
+      </form>
+
+
+
         {% csrf_token %}
     </form>
-</body>
-</html>
+    </div>
+
+{% endblock %}
