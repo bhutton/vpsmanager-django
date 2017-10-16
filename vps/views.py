@@ -16,13 +16,17 @@ def create_vps(request):
         new_item_memory = request.POST['item_memory']
         new_item_disk = request.POST['item_disk']
         new_item_bridge = request.POST['item_bridge']
+        new_item_create_disk = request.POST['item_create_disk']
+        new_item_create_path = request.POST['item_create_path']
         Instance.objects.create(
             name=new_item_name,
             description=new_item_description,
             image=new_item_image,
             memory=new_item_memory,
             disk=new_item_disk,
-            bridge=new_item_bridge
+            bridge=new_item_bridge,
+            create_disk=new_item_create_disk,
+            create_path=new_item_create_path
         )
         return redirect('/')
     else:

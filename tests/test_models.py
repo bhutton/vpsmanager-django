@@ -18,6 +18,8 @@ class InstanceInventoryTest(TestCase):
         first_item.path = 'mypath'
         first_item.start_script = 'startscript.sh'
         first_item.stop_script = 'stopscript.sh'
+        first_item.create_disk = True
+        first_item.create_path = True
         first_item.ip = '1.2.3.4'
         first_item.save()
 
@@ -32,6 +34,8 @@ class InstanceInventoryTest(TestCase):
         second_item.path = 'mypath'
         second_item.start_script = 'startscript.sh'
         second_item.stop_script = 'stopscript.sh'
+        second_item.create_disk = True
+        second_item.create_path = True
         second_item.ip = '1.2.3.4'
 
         second_item.save()
@@ -51,6 +55,8 @@ class InstanceInventoryTest(TestCase):
         self.assertEqual(first_saved_item.path, 'mypath')
         self.assertEqual(first_saved_item.start_script, 'startscript.sh')
         self.assertEqual(first_saved_item.stop_script, 'stopscript.sh')
+        self.assertEqual(first_saved_item.create_disk, True)
+        self.assertEqual(first_saved_item.create_path, True)
         self.assertEqual(first_saved_item.ip, '1.2.3.4')
         self.assertEqual(second_saved_item.name, 'Instance2')
         self.assertEqual(second_saved_item.description, 'my instance')
@@ -62,6 +68,8 @@ class InstanceInventoryTest(TestCase):
         self.assertEqual(second_saved_item.path, 'mypath')
         self.assertEqual(second_saved_item.start_script, 'startscript.sh')
         self.assertEqual(second_saved_item.stop_script, 'stopscript.sh')
+        self.assertEqual(second_saved_item.create_disk, True)
+        self.assertEqual(second_saved_item.create_path, True)
         self.assertEqual(second_saved_item.ip, '1.2.3.4')
 
 

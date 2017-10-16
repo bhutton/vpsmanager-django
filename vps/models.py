@@ -18,6 +18,8 @@ class Instance(models.Model):
     path = models.TextField(default='')
     start_script = models.TextField(default='')
     stop_script = models.TextField(default='')
+    create_disk = models.BooleanField(default=False)
+    create_path = models.BooleanField(default=False)
     ip = models.TextField(default='')
 
     def __str__(self):
