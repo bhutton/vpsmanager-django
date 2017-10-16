@@ -27,6 +27,6 @@ class Instance(models.Model):
 
     class Meta:
         ordering = ('id',)
-        unique_together = ('name','path')
+        # unique_together = ('name','path')
 
 

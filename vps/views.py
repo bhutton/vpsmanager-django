@@ -18,6 +18,13 @@ def create_vps(request):
         new_item_bridge = request.POST['item_bridge']
         new_item_create_disk = request.POST['item_create_disk']
         new_item_create_path = request.POST['item_create_path']
+
+        if "on" in new_item_create_disk:
+            new_item_create_disk = True
+
+        if "on" in new_item_create_path:
+            new_item_create_path = True
+
         Instance.objects.create(
             name=new_item_name,
             description=new_item_description,
@@ -28,6 +35,7 @@ def create_vps(request):
             create_disk=new_item_create_disk,
             create_path=new_item_create_path
         )
+
         return redirect('/')
     else:
         new_item_text = ''
