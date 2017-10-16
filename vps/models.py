@@ -10,7 +10,9 @@ from django.urls import reverse
 class Instance(models.Model):
     name = models.TextField(default='')
     description = models.TextField(default='')
-    ram = models.IntegerField(default=0)
+    memory = models.IntegerField(default=0)
+    disk = models.IntegerField(default=0)
+    bridge = models.IntegerField(default=0)
     console = models.IntegerField(default=0)
     image = models.IntegerField(default=0)
     path = models.TextField(default='')

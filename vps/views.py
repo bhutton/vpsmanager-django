@@ -10,8 +10,20 @@ def home_page(request):
 
 def create_vps(request):
     if request.method == 'POST':
-        new_item_text = request.POST['item_name']
-        Instance.objects.create(name=new_item_text)
+        new_item_name = request.POST['item_name']
+        new_item_description = request.POST['item_description']
+        new_item_image = request.POST['item_image']
+        new_item_memory = request.POST['item_memory']
+        new_item_disk = request.POST['item_disk']
+        new_item_bridge = request.POST['item_bridge']
+        Instance.objects.create(
+            name=new_item_name,
+            description=new_item_description,
+            image=new_item_image,
+            memory=new_item_memory,
+            disk=new_item_disk,
+            bridge=new_item_bridge
+        )
         return redirect('/')
     else:
         new_item_text = ''
