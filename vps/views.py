@@ -4,6 +4,9 @@
 from django.shortcuts import redirect, render
 from vps.models import Instance
 
+CHECKBOX_MAPPING = {'on': True,
+                    'off': False, }
+
 def home_page(request):
     items = Instance.objects.all()
     return render(request, 'home.html', {'items': items})
@@ -16,14 +19,8 @@ def create_vps(request):
         new_item_memory = request.POST['item_memory']
         new_item_disk = request.POST['item_disk']
         new_item_bridge = request.POST['item_bridge']
-        new_item_create_disk = request.POST['item_create_disk']
-        new_item_create_path = request.POST['item_create_path']
-
-        if "on" in new_item_create_disk:
-            new_item_create_disk = True
-
-        if "on" in new_item_create_path:
-            new_item_create_path = True
+        new_item_create_disk = CHECKBOX_MAPPING.get(request.POST['item_create_disk'])
+        new_item_create_path = CHECKBOX_MAPPING.get(request.POST['item_create_path'])
 
         Instance.objects.create(
             name=new_item_name,
