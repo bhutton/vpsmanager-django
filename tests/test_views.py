@@ -44,8 +44,8 @@ class CreateVPSTest(TestCase):
                                           'item_memory': 512,
                                           'item_disk': 20,
                                           'item_bridge': 1,
-                                          'item_create_disk': True,
-                                          'item_create_path': True}
+                                          'item_create_disk': 'on',
+                                          'item_create_path': 'on'}
                                     )
 
         self.assertEqual(Instance.objects.count(), 1)

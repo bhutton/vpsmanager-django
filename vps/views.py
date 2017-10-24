@@ -1,6 +1,3 @@
-# from django.http import HttpResponse
-# from django.shortcuts import redirect, render
-# from django.core.exceptions import ValidationError
 from django.shortcuts import redirect, render
 from vps.models import Instance
 
