@@ -25,7 +25,7 @@ urlpatterns = [
     # url(r'^vps/', include('vps.urls')),
     url(r'^vps/', include(vps_urls)),
     # url(r'^createvps/', views.create_vps, name='createvps'),
-    # url(r'^createuser/', views.create_user, name='createuser'),
+    url(r'^user/', views.create_user, name='createuser'),
     # url(r'^lists/', include(vps_urls)),
     # url(r'^admin/', admin.site.urls),
 ]

@@ -64,13 +64,14 @@ class CreateVPSTest(TestCase):
         self.assertEqual(response['location'], '/')
 
 
-# class CreateUserTest(TestCase):
-#
-#     def test_create_user_renders_form(self):
-#         response = self.client.get('/createuser/')
-#         self.assertTemplateUsed(response, 'createuser.html')
-#         expected_html = render_to_string('createuser.html')
-#         self.assertEqual(response.content.decode(), expected_html)
+
+class CreateUserTest(TestCase):
+
+    def test_create_user_renders_form(self):
+        response = self.client.get('/user/create/')
+        self.assertTemplateUsed(response, 'createuser.html')
+        expected_html = render_to_string('createuser.html')
+        self.assertEqual(response.content.decode(), expected_html)
 
 
 

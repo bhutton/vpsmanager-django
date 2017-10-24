@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from vps.models import Instance
+from vps.forms import ExistingListItemForm
 
 CHECKBOX_MAPPING = {'on': True,
                     'off': False, }
@@ -38,6 +39,18 @@ def create_vps(request):
         'new_item_text': new_item_text,
     })
 
+def view_vps(request, list_id):
+    list_ = Instance.objects.get(id=list_id)
+    form = ExistingListItemForm(for_list=list_)
+
+    if request.method == 'POST':
+        form = ExistingListItemForm(for_list=list_, data=request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect(list_)
+
+    return render(request, 'list.html', {'list': list_, "form": form})
 
 def create_user(request):
     return render(request, 'createuser.html')

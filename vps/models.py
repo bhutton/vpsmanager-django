@@ -2,11 +2,6 @@ from django.db import models
 from django.urls import reverse
 
 
-# class vps(models.Model):
-#     def get_absolute_url(self):
-#         return reverse('view_vps', args=[self.id])
-
-
 class Instance(models.Model):
     name = models.TextField(default='')
     description = models.TextField(default='')
