@@ -109,9 +109,38 @@ class InstanceInventoryTest(TestCase):
         self.assertEqual(saved_items.count(), 2)
 
         response = second_item.delete()
-        assert response
         saved_items = Instance.objects.all()
         self.assertEqual(saved_items.count(), 1)
+
+    def test_update_item(self):
+        first_item = Instance()
+        first_item.name = 'Instance1'
+        first_item.description = 'my instance'
+        first_item.memory = 512
+        first_item.disk = 20
+        first_item.bridge = 1
+        first_item.console = 204
+        first_item.image = 1
+        first_item.path = 'mypath'
+        first_item.start_script = 'startscript.sh'
+        first_item.stop_script = 'stopscript.sh'
+        first_item.create_disk = True
+        first_item.create_path = True
+        first_item.ip = '1.2.3.4'
+        first_item.save()
+
+        saved_items = Instance.objects.all()
+        first_saved_item = saved_items[0]
+        self.assertEqual(first_saved_item.name, 'Instance1')
+
+        first_item.name = 'Instance2'
+        first_item.save()
+        
+        saved_items = Instance.objects.all()
+        first_saved_item = saved_items[0]
+        self.assertEqual(first_saved_item.name, 'Instance2')
+
+
 
 
 
