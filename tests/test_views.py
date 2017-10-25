@@ -58,11 +58,8 @@ class CreateVPSTest(TestCase):
         self.assertEqual(new_item.bridge, 1)
         self.assertEqual(new_item.create_disk, True)
         self.assertEqual(new_item.create_path, True)
-
-
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['location'], '/')
-
 
 
 class CreateUserTest(TestCase):
