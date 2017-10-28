@@ -100,6 +100,23 @@ class CreateVPSTest(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['location'], '/')
 
+    def test_vps_user_can_delete_instance(self):
+        first_item = Instance()
+        first_item.name = 'My old list item'
+        first_item.description = 'My description'
+        first_item.image = 1
+        first_item.memory = 512
+        first_item.disk = 30
+        first_item.bridge = 2
+        first_item.create_disk = False
+        first_item.create_path = False
+        first_item.save()
+        response = self.client.get('/vps/delete/1')
+        self.assertEquals(response.status_code,302)
+
+        new_item = Instance.objects.first()
+        self.assertEquals(new_item, None)
+
 
 
 class CreateUserTest(TestCase):
