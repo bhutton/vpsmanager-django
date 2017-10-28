@@ -4,6 +4,7 @@ from django.test import TestCase
 
 from vps.models import Instance
 
+
 class InstanceInventoryTest(TestCase):
 
     def test_saving_and_retrieving_items(self):
@@ -135,8 +136,8 @@ class InstanceInventoryTest(TestCase):
 
         first_item.name = 'Instance2'
         first_item.save()
-        
-        saved_items = Instance.objects.all()
+
+        saved_items = Instance.objects.all().filter(name="Instance2")
         first_saved_item = saved_items[0]
         self.assertEqual(first_saved_item.name, 'Instance2')
 
