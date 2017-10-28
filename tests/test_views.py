@@ -9,6 +9,7 @@ from vps.models import Instance
 
 class HomePageTest(TestCase):
 
+
     def test_home_page_renders_homepage(self):
         response = self.client.get('/')
         self.assertTemplateUsed(response, 'home.html')
@@ -32,6 +33,19 @@ class HomePageTest(TestCase):
 
 
 class CreateVPSTest(TestCase):
+
+    def populate_instances(self):
+        first_item = Instance()
+        first_item.name = 'My old list item'
+        first_item.description = 'My description'
+        first_item.image = 1
+        first_item.memory = 512
+        first_item.disk = 30
+        first_item.bridge = 2
+        first_item.create_disk = False
+        first_item.create_path = False
+        first_item.save()
+
 
     def test_create_vps_renders_form(self):
         response = self.client.get('/vps/create/')
@@ -63,19 +77,11 @@ class CreateVPSTest(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['location'], '/')
 
-    def test_vps_user_can_update_instance(self):
-        first_item = Instance()
-        first_item.name = 'My old list item'
-        first_item.description = 'My description'
-        first_item.image = 1
-        first_item.memory = 512
-        first_item.disk = 30
-        first_item.bridge = 2
-        first_item.create_disk = False
-        first_item.create_path = False
-        first_item.save()
 
-        response = self.client.post('/vps/modify/',
+    @populate_instances
+    def test_vps_user_can_update_instance(self):
+
+        response = self.client.post('/vps/modify/1',
                                     data={'item_id': 1,
                                           'item_name': 'A changed list item',
                                           'item_description': 'My description',
@@ -100,17 +106,9 @@ class CreateVPSTest(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['location'], '/')
 
+
+    @populate_instances
     def test_vps_user_can_delete_instance(self):
-        first_item = Instance()
-        first_item.name = 'My old list item'
-        first_item.description = 'My description'
-        first_item.image = 1
-        first_item.memory = 512
-        first_item.disk = 30
-        first_item.bridge = 2
-        first_item.create_disk = False
-        first_item.create_path = False
-        first_item.save()
         response = self.client.get('/vps/delete/1')
         self.assertEquals(response.status_code,302)
 

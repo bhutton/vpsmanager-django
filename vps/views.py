@@ -5,9 +5,11 @@ from vps.forms import ExistingListItemForm
 CHECKBOX_MAPPING = {'on': True,
                     'off': False, }
 
+
 def home_page(request):
     items = Instance.objects.all()
     return render(request, 'home.html', {'items': items})
+
 
 def create_vps(request):
     if request.method == 'POST':
@@ -39,9 +41,10 @@ def create_vps(request):
         'new_item_text': new_item_text,
     })
 
-def modify_vps(request):
+
+def modify_vps(request,id):
     if request.method == 'POST':
-        new_item_id = int(request.POST['item_id'])
+        # new_item_id = id
         new_item_name = request.POST['item_name']
         new_item_description = request.POST['item_description']
         new_item_image = request.POST['item_image']
@@ -51,7 +54,7 @@ def modify_vps(request):
         new_item_create_disk = CHECKBOX_MAPPING.get(request.POST['item_create_disk'])
         new_item_create_path = CHECKBOX_MAPPING.get(request.POST['item_create_path'])
 
-        saved_items = Instance.objects.get(pk=new_item_id)
+        saved_items = Instance.objects.get(pk=id)
         existing_items = saved_items
         existing_items.name = new_item_name
         existing_items.description = new_item_description
@@ -63,15 +66,21 @@ def modify_vps(request):
         existing_items.create_path = new_item_create_path
         saved_items.save()
 
-        # saved_items.
-
         return redirect('/')
     else:
-        new_item_text = ''
+        saved_items = Instance.objects.all().filter(pk=id)
 
-    return render(request, 'createvps.html', {
-        'new_item_text': new_item_text,
+    return render(request, 'modifyvps.html', {
+        'items': saved_items,
     })
+
+
+def delete_vps(request, id):
+    if request.method == "GET":
+        saved_items = Instance.objects.get(pk=id)
+        saved_items.delete()
+    return redirect('/')
+
 
 def view_vps(request, list_id):
     list_ = Instance.objects.get(id=list_id)
