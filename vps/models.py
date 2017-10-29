@@ -6,7 +6,7 @@ class Instance(models.Model):
     name = models.TextField(default='')
     description = models.TextField(default='')
     memory = models.IntegerField(default=0)
-    disk = models.IntegerField(default=0)
+    # disk = models.IntegerField(default=0)
     bridge = models.IntegerField(default=0)
     console = models.IntegerField(default=0)
     image = models.IntegerField(default=0)
@@ -25,3 +25,17 @@ class Instance(models.Model):
         # unique_together = ('name','path')
 
 
+class Disk(models.Model):
+    name = models.TextField(default='')
+    size = models.IntegerField(default=20)
+    instance = models.ForeignKey(Instance, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ('id',)
+
+class Network(models.Model):
+    name = models.TextField(default='')
+    instance = models.ForeignKey(Instance, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ('id',)

@@ -1,93 +1,95 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <a href="/"><i class="material-icons md-18">keyboard_backspace</i></a>
+<a href="/"><i class="material-icons md-18">keyboard_backspace</i></a>
 
-    <div class="container">
+<div class="container">
 
     <form name="vps" method="POST" class="form-horizontal">
         <div class="form-group row">
-          <label for="name" class="col-sm-4 control-label">Name</label>
-          <div class="col-sm-7">
-            <input class="form-control" name="item_name" id="id_item_name" placeholder="Enter Instance Name" required onchange="return validateVPSName()" />
-            <p id="valName"></p></td>
-          </div>
+            <label for="name" class="col-sm-4 control-label">Name</label>
+            <div class="col-sm-7">
+                <input class="form-control" name="item_name" id="id_item_name" placeholder="Enter Instance Name"
+                       required onchange="return validateVPSName()"/>
+                <p id="valName"></p></td>
+            </div>
         </div>
 
         <div class="form-group row">
-          <label for="description" class="col-sm-4 control-label">Description</label>
-          <div class="col-sm-7">
-            <input type="text" name="item_description" class="form-control" placeholder="Enter Description" required onchange="return validateVPSDescription()"></td>
-            <p id="valDescription"></p></td>
-          </div>
+            <label for="description" class="col-sm-4 control-label">Description</label>
+            <div class="col-sm-7">
+                <input type="text" name="item_description" class="form-control" placeholder="Enter Description" required
+                       onchange="return validateVPSDescription()"></td>
+                <p id="valDescription"></p></td>
+            </div>
         </div>
 
         <div class="form-group row">
-          <label for="image" class="col-sm-4 control-label">Image</label>
-          <div class="col-sm-7">
-            <select name="item_image" class="form-control">
-              <option value="1">FreeBSD</option>
-              <option value="2">Ubuntu</option>
-              <option value="3">Centos</option>
-              <option value="4">Windows10</option>
-            </select>
-          </div>
+            <label for="image" class="col-sm-4 control-label">Image</label>
+            <div class="col-sm-7">
+                <select name="item_image" class="form-control">
+                    <option value="1">FreeBSD</option>
+                    <option value="2">Ubuntu</option>
+                    <option value="3">Centos</option>
+                    <option value="4">Windows10</option>
+                </select>
+            </div>
         </div>
 
         <div class="form-group row">
-          <label for="ram" class="col-sm-4 control-label">Memory</label>
-          <div class="col-sm-7">
-            <select name="item_memory" class="form-control">
-                <option value="512">512MB</option>
-                <option value="1024">1GB</option>
-                <option value="2048">2GB</option>
-              </select>
-          </div>
+            <label for="ram" class="col-sm-4 control-label">Memory</label>
+            <div class="col-sm-7">
+                <select name="item_memory" class="form-control">
+                    <option value="512">512MB</option>
+                    <option value="1024">1GB</option>
+                    <option value="2048">2GB</option>
+                </select>
+            </div>
         </div>
 
         <div class="form-group row">
-          <label for="disk" class="col-sm-4 control-label">Disk</label>
-          <div class="col-sm-7">
-            <select name="item_disk" class="form-control">
-              <option value="20">20GB</option>
-              <option value="30">30GB</option>
-              <option value="40">40GB</option>
-            </select>
-          </div>
+            <label for="disk" class="col-sm-4 control-label">Disk</label>
+            <div class="col-sm-7">
+                <select name="item_disk" class="form-control">
+                    <option value="20">20GB</option>
+                    <option value="30">30GB</option>
+                    <option value="40">40GB</option>
+                </select>
+            </div>
         </div>
 
         <div class="form-group row">
-          <label for="bridge" class="col-sm-4 control-label">Bridge</label>
-          <div class="col-sm-7">
-            <select name="item_bridge" class="form-control">
-                <option>1</option>
-            </select>
-          </div>
+            <label for="bridge" class="col-sm-4 control-label">Bridge</label>
+            <div class="col-sm-7">
+                <select name="item_bridge" class="form-control">
+                    <option>1</option>
+                </select>
+            </div>
         </div>
 
         <div class="form-group row">
-          <label for="createDisk" class="col-sm-4 control-label">Create Disk</label>
-          <div class="col-sm-7">
-            <input type="checkbox" name="item_create_disk" class="form-control" checked>
-          </div>
+            <label for="createDisk" class="col-sm-4 control-label">Create Disk</label>
+            <div class="col-sm-7">
+                <input type="checkbox" name="item_create_disk" class="form-control" checked>
+            </div>
         </div>
 
         <div class="form-group row">
-          <label for="createPath" class="col-sm-4 control-label">Create Path</label>
-          <div class="col-sm-7">
-            <input type="checkbox" name="item_create_path" class="form-control" checked>
-          </div>
+            <label for="createPath" class="col-sm-4 control-label">Create Path</label>
+            <div class="col-sm-7">
+                <input type="checkbox" name="item_create_path" class="form-control" checked>
+            </div>
         </div>
 
         <div class="form-group row">
             <div class="col-sm-4"></div>
-          <div class="col-sm-7">
-            <button id="btnCreateVPS" class="btn btn-lg btn-primary btn-block" type="button">Create VPS</button>
-              <input name="item_submit" id="item_submit" type="submit">
-          </div>
+            <div class="col-sm-7">
+                <input name="item_submit" class="btn btn-lg btn-primary btn-block" id="item_submit" type="submit"
+                       value="Create VPS">
+            </div>
         </div>
         {% csrf_token %}
-      </form>
-    </div>
+    </form>
+</div>
 
 {% endblock %}

@@ -17,7 +17,7 @@ from django.conf.urls import url
 from vps import views
 
 urlpatterns = [
-	url(r'^(\d+)/$', views.Instance, name='viewvps'),
+	url(r'^(\d+)/$', views.view_vps, name='viewvps'),
     url(r'^create/', views.create_vps, name='createvps'),
     url(r'^modify/([0-9]+)', views.modify_vps, name='modifyvps'),
     url(r'^delete/([0-9]+)', views.delete_vps, name='deletevps'),

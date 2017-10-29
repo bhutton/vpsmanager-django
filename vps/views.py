@@ -1,9 +1,9 @@
 from django.shortcuts import redirect, render
-from vps.models import Instance
+from vps.models import Instance, Disk, Network
 from vps.forms import ExistingListItemForm
 
 CHECKBOX_MAPPING = {'on': True,
-                    'off': False, }
+                    None: False, }
 
 
 def home_page(request):
@@ -19,10 +19,16 @@ def create_vps(request):
         new_item_memory = request.POST['item_memory']
         new_item_disk = request.POST['item_disk']
         new_item_bridge = request.POST['item_bridge']
-        new_item_create_disk = CHECKBOX_MAPPING.get(request.POST['item_create_disk'])
-        new_item_create_path = CHECKBOX_MAPPING.get(request.POST['item_create_path'])
+        try:
+            new_item_create_disk = CHECKBOX_MAPPING.get(request.POST['item_create_disk'])
+        except:
+            new_item_create_disk = False
 
-        Instance.objects.create(
+        try:
+            new_item_create_path = CHECKBOX_MAPPING.get(request.POST['item_create_path'])
+        except:
+            new_item_create_path = False
+        item = Instance.objects.create(
             name=new_item_name,
             description=new_item_description,
             image=new_item_image,
@@ -32,6 +38,9 @@ def create_vps(request):
             create_disk=new_item_create_disk,
             create_path=new_item_create_path
         )
+
+        Disk.objects.create(name='', instance=item)
+        Network.objects.create(name='', instance=item)
 
         return redirect('/')
     else:
@@ -51,8 +60,17 @@ def modify_vps(request,id):
         new_item_memory = request.POST['item_memory']
         new_item_disk = request.POST['item_disk']
         new_item_bridge = request.POST['item_bridge']
-        new_item_create_disk = CHECKBOX_MAPPING.get(request.POST['item_create_disk'])
-        new_item_create_path = CHECKBOX_MAPPING.get(request.POST['item_create_path'])
+
+        try:
+            new_item_create_disk = CHECKBOX_MAPPING.get(request.POST['item_create_disk'])
+        except:
+            new_item_create_disk = False
+
+        try:
+            new_item_create_path = CHECKBOX_MAPPING.get(request.POST['item_create_path'])
+        except:
+            new_item_create_path = False
+
 
         saved_items = Instance.objects.get(pk=id)
         existing_items = saved_items
@@ -83,17 +101,24 @@ def delete_vps(request, id):
 
 
 def view_vps(request, list_id):
-    list_ = Instance.objects.get(id=list_id)
-    form = ExistingListItemForm(for_list=list_)
+    instance = Instance.objects.all().filter(pk=list_id)
+    disks = Disk.objects.all()
+    device = Network.objects.all()
 
-    if request.method == 'POST':
-        form = ExistingListItemForm(for_list=list_, data=request.POST)
+    # form = ExistingListItemForm(for_list=list_)
+    #
+    # if request.method == 'POST':
+    #     form = ExistingListItemForm(for_list=list_, data=request.POST)
+    #
+    #     if form.is_valid():
+    #         form.save()
+    #         return redirect(list_)
 
-        if form.is_valid():
-            form.save()
-            return redirect(list_)
-
-    return render(request, 'list.html', {'list': list_, "form": form})
+    return render(request, 'viewvps.html', {
+        'row': instance,
+        'disks': disks,
+        'device': device
+    })
 
 def create_user(request):
     return render(request, 'createuser.html')
