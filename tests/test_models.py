@@ -198,14 +198,19 @@ class InstanceInventoryTest(TestCase):
         first_item.save()
 
         first_network = Network(name='test', instance=first_item)
-        first_bridge = Bridge(name='test', network=first_network)
         first_network.save()
 
         instance = Instance.objects.all().filter(pk=first_item.id)
         network = Network.objects.all().filter(instance_id=first_item.id)
+
+        first_bridge = Bridge(name='test', network=first_network)
+        first_bridge.save()
+
+        bridge = Bridge.objects.all().filter(network_id=first_network.id)
         item = instance[0]
         self.assertEqual(item.name, 'Instance1')
         self.assertEqual(network.count(), 1)
+        self.assertEqual(bridge.count(), 1)
 
     def test_vps_get_status(self):
         first_item = Instance()

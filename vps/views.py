@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from vps.models import Instance, Disk, Network
+from vps.models import Instance, Disk, Network, Bridge
 from vps.forms import ExistingListItemForm
 
 CHECKBOX_MAPPING = {'on': True,
@@ -104,20 +104,13 @@ def view_vps(request, list_id):
     instance = Instance.objects.all().filter(pk=list_id)
     disks = Disk.objects.all().filter(instance_id=instance[0].id)
     device = Network.objects.all().filter(instance_id=instance[0].id)
-
-    # form = ExistingListItemForm(for_list=list_)
-    #
-    # if request.method == 'POST':
-    #     form = ExistingListItemForm(for_list=list_, data=request.POST)
-    #
-    #     if form.is_valid():
-    #         form.save()
-    #         return redirect(list_)
+    bridge = Bridge.objects.all().filter(network_id=device[0].id)
 
     return render(request, 'viewvps.html', {
         'row': instance,
         'disks': disks,
-        'device': device
+        'device': device,
+        'bridge': bridge,
     })
 
 def create_user(request):
