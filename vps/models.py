@@ -15,6 +15,7 @@ class Instance(models.Model):
     stop_script = models.TextField(default='')
     create_disk = models.BooleanField(default=False)
     create_path = models.BooleanField(default=False)
+    status = models.TextField(default='inactive')
     ip = models.TextField(default='')
 
     def __str__(self):

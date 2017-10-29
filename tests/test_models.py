@@ -157,6 +157,29 @@ class InstanceInventoryTest(TestCase):
         self.assertEqual(item.name, 'Instance1')
         self.assertEqual(disk.count(), 1)
 
+
+
+    @staticmethod
+    def test_create_instance_with_network():
+        first_item = Instance()
+        first_item.name = 'Instance1'
+        first_item.description = 'my instance'
+        first_item.memory = 512
+        first_item.disk = 20
+        first_item.bridge = 1
+        first_item.console = 204
+        first_item.image = 1
+        first_item.path = 'mypath'
+        first_item.start_script = 'startscript.sh'
+        first_item.stop_script = 'stopscript.sh'
+        first_item.create_disk = True
+        first_item.create_path = True
+        first_item.ip = '1.2.3.4'
+        first_item.save()
+
+        first_disk = Network(name='test', instance=first_item)
+        first_disk.save()
+
     def test_create_and_retrieve_instance_with_network(self):
         first_item = Instance()
         first_item.name = 'Instance1'
@@ -183,46 +206,21 @@ class InstanceInventoryTest(TestCase):
         self.assertEqual(item.name, 'Instance1')
         self.assertEqual(network.count(), 1)
 
-    @staticmethod
-    def test_create_instance_with_network():
+    def test_vps_get_status(self):
         first_item = Instance()
-        first_item.name = 'Instance1'
-        first_item.description = 'my instance'
-        first_item.memory = 512
-        first_item.disk = 20
-        first_item.bridge = 1
-        first_item.console = 204
+        first_item.name = 'My old list item'
+        first_item.description = 'My description'
         first_item.image = 1
-        first_item.path = 'mypath'
-        first_item.start_script = 'startscript.sh'
-        first_item.stop_script = 'stopscript.sh'
-        first_item.create_disk = True
-        first_item.create_path = True
-        first_item.ip = '1.2.3.4'
+        first_item.memory = 512
+        first_item.disk = 30
+        first_item.bridge = 2
+        first_item.create_disk = False
+        first_item.create_path = False
         first_item.save()
 
-        first_disk = Network(name='test', instance=first_item)
-        first_disk.save()
-
-    # def test_create_and_retrieve_instance_with_network(self):
-    #     first_item = Instance()
-    #     first_item.name = 'Instance1'
-    #     first_item.description = 'my instance'
-    #     first_item.memory = 512
-    #     first_item.disk = 20
-    #     first_item.bridge = 1
-    #     first_item.console = 204
-    #     first_item.image = 1
-    #     first_item.path = 'mypath'
-    #     first_item.start_script = 'startscript.sh'
-    #     first_item.stop_script = 'stopscript.sh'
-    #     first_item.create_disk = True
-    #     first_item.create_path = True
-    #     first_item.ip = '1.2.3.4'
-    #     first_item.save()
-    #
-    #     first_disk = Network(name='test', instance=first_item)
-    #     first_disk.save()
+        instance = Instance.objects.all().filter(pk=first_item.id)
+        item = instance[0]
+        self.assertEqual(item.status, 'inactive')
 
     def test_update_item(self):
         first_item = Instance()
