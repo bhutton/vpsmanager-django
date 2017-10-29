@@ -2,7 +2,7 @@ from django.test import TestCase
 
 # import collections
 
-from vps.models import Instance, Disk, Network
+from vps.models import Instance, Disk, Network, Bridge
 
 
 class InstanceInventoryTest(TestCase):
@@ -198,6 +198,7 @@ class InstanceInventoryTest(TestCase):
         first_item.save()
 
         first_network = Network(name='test', instance=first_item)
+        first_bridge = Bridge(name='test', network=first_network)
         first_network.save()
 
         instance = Instance.objects.all().filter(pk=first_item.id)
@@ -220,7 +221,7 @@ class InstanceInventoryTest(TestCase):
 
         instance = Instance.objects.all().filter(pk=first_item.id)
         item = instance[0]
-        self.assertEqual(item.status, 'inactive')
+        self.assertEqual(item.status, 'Stopped')
 
     def test_update_item(self):
         first_item = Instance()

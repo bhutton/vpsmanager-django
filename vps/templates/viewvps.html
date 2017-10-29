@@ -6,16 +6,16 @@
 
 {% for line in row %}
 
-  {% if not status == "Installing" %}
+  {% if not line.status == "Installing" %}
 
-  <a href="/modifyVPS?id={{ line.0 }}"><i class="material-icons md-18">edit</i></a>
+  <a href="/vps/modify/{{ line.id }}"><i class="material-icons md-18">edit</i></a>
 
-  {% if status == "Stopped" %}
-  <a href="/startVPS?id={{ line.0 }}" onclick="loading();" class="icons"><i class="material-icons">play_arrow</i></a>
+  {% if line.status == "Stopped" %}
+  <a href="/vps/start/{{ line.id }}" onclick="loading();" class="icons"><i class="material-icons">play_arrow</i></a>
   {% else %}
-  <a href="/stopVPS?id={{ line.0 }}" onclick="return confirm('Are you sure you want to stop this server?')"><i class="material-icons">stop</i></a>
+  <a href="/vps/stop/{{ line.id }}" onclick="return confirm('Are you sure you want to stop this server?')"><i class="material-icons">stop</i></a>
   {% endif %}
-  <a href="/snapShot?id={{ line.0 }}"><i class="material-icons">camera_enhance</i></a>
+  <a href="/vps/snapshot/{{ line.id }}"><i class="material-icons">camera_enhance</i></a>
   <button class="console" onclick="myFunction()" alt="Console"><i class="material-icons">video_label</i></button>
 
   {% endif %}
@@ -45,11 +45,11 @@
         {% endfor %}
         {% for dev in device %}
       </div>
-      <div class="row"><label class="col-md-5">Network:</label> tap{{ dev.1 }} -> bridge{{ dev.3 }}
+      <div class="row"><label class="col-md-5">Network:</label> tap{{ dev.id }} -> bridge{{ dev.3 }}
           {% if dev.4 == "UP" %}
-        <a href="/stopInterface?id={{ dev.1 }}&vps_id={{ line.0 }}" class="Running"><i class="material-icons">arrow_drop_up</i></a>
+        <a href="/vps/{{ line.id }}/start/interface/{{ dev.id }}/" class="Running"><i class="material-icons">arrow_drop_up</i></a>
           {% else %}
-        <a href="/startInterface?id={{ dev.1 }}&vps_id={{ line.0 }}" class="Stopped"><i class="material-icons">arrow_drop_down</i></a>
+        <a href="/vps/{{ line.id }}/start/interface/{{ dev.id }}/" class="Stopped"><i class="material-icons">arrow_drop_down</i></a>
           {% endif %}
         {% endfor %}
       </div>

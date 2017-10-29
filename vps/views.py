@@ -102,8 +102,8 @@ def delete_vps(request, id):
 
 def view_vps(request, list_id):
     instance = Instance.objects.all().filter(pk=list_id)
-    disks = Disk.objects.all()
-    device = Network.objects.all()
+    disks = Disk.objects.all().filter(instance_id=instance[0].id)
+    device = Network.objects.all().filter(instance_id=instance[0].id)
 
     # form = ExistingListItemForm(for_list=list_)
     #

@@ -1,12 +1,11 @@
 from django.db import models
-from django.urls import reverse
+# from django.urls import reverse
 
 
 class Instance(models.Model):
     name = models.TextField(default='')
     description = models.TextField(default='')
     memory = models.IntegerField(default=0)
-    # disk = models.IntegerField(default=0)
     bridge = models.IntegerField(default=0)
     console = models.IntegerField(default=0)
     image = models.IntegerField(default=0)
@@ -15,7 +14,7 @@ class Instance(models.Model):
     stop_script = models.TextField(default='')
     create_disk = models.BooleanField(default=False)
     create_path = models.BooleanField(default=False)
-    status = models.TextField(default='inactive')
+    status = models.TextField(default='Stopped')
     ip = models.TextField(default='')
 
     def __str__(self):
@@ -37,6 +36,13 @@ class Disk(models.Model):
 class Network(models.Model):
     name = models.TextField(default='')
     instance = models.ForeignKey(Instance, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ('id',)
+
+class Bridge(models.Model):
+    name = models.TextField(default='')
+    network = models.ForeignKey(Network, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ('id',)
