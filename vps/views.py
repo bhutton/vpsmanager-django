@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from vps.models import Instance, Disk, Network, Bridge
+from vps.models import Instance, Disk, Network, InstanceControl
 from vps.forms import ExistingListItemForm
 
 CHECKBOX_MAPPING = {'on': True,
@@ -28,19 +28,19 @@ def create_vps(request):
             new_item_create_path = CHECKBOX_MAPPING.get(request.POST['item_create_path'])
         except:
             new_item_create_path = False
+
         item = Instance.objects.create(
             name=new_item_name,
             description=new_item_description,
             image=new_item_image,
             memory=new_item_memory,
             disk=new_item_disk,
-            bridge=new_item_bridge,
             create_disk=new_item_create_disk,
             create_path=new_item_create_path
         )
 
         Disk.objects.create(name='', instance=item)
-        Network.objects.create(name='', instance=item)
+        Network.objects.create(name='', bridge=new_item_bridge, instance=item)
 
         return redirect('/')
     else:
@@ -104,14 +104,64 @@ def view_vps(request, list_id):
     instance = Instance.objects.all().filter(pk=list_id)
     disks = Disk.objects.all().filter(instance_id=instance[0].id)
     device = Network.objects.all().filter(instance_id=instance[0].id)
-    bridge = Bridge.objects.all().filter(network_id=device[0].id)
 
     return render(request, 'viewvps.html', {
         'row': instance,
         'disks': disks,
         'device': device,
-        'bridge': bridge,
     })
+
+
+def start_vps(request, id):
+    vps = InstanceControl()
+    status = vps.start(id)
+
+    saved_items = Instance.objects.get(pk=id)
+    existing_items = saved_items
+    existing_items.status = status
+    saved_items.save()
+
+    instance = Instance.objects.all().filter(pk=id)
+    disks = Disk.objects.all().filter(instance_id=instance[0].id)
+    device = Network.objects.all().filter(instance_id=instance[0].id)
+
+    return render(request, 'viewvps.html', {
+        'row': instance,
+        'disks': disks,
+        'device': device,
+    })
+
+
+def stop_vps(request, id):
+    vps = InstanceControl()
+    status = vps.stop(id)
+
+    saved_items = Instance.objects.get(pk=id)
+    existing_items = saved_items
+    existing_items.status = status
+    saved_items.save()
+
+    instance = Instance.objects.all().filter(pk=id)
+    disks = Disk.objects.all().filter(instance_id=instance[0].id)
+    device = Network.objects.all().filter(instance_id=instance[0].id)
+
+    return render(request, 'viewvps.html', {
+        'row': instance,
+        'disks': disks,
+        'device': device,
+    })
+
+def snapshot_vps(request, id):
+    instance = Instance.objects.all().filter(pk=id)
+    disks = Disk.objects.all().filter(instance_id=instance[0].id)
+    device = Network.objects.all().filter(instance_id=instance[0].id)
+
+    return render(request, 'viewvps.html', {
+        'row': instance,
+        'disks': disks,
+        'device': device,
+    })
+
 
 def create_user(request):
     return render(request, 'createuser.html')

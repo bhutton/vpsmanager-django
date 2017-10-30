@@ -65,12 +65,13 @@ class CreateVPSTest(TestCase):
 
         self.assertEqual(Instance.objects.count(), 1)
         new_item = Instance.objects.first()
+        new_network = Network.objects.all().filter(instance_id=new_item)
         self.assertEqual(new_item.name, 'A new list item')
         self.assertEqual(new_item.description, 'My description')
         self.assertEqual(new_item.image, 1)
         self.assertEqual(new_item.memory, 512)
         # self.assertEqual(new_item.disk, 20)
-        self.assertEqual(new_item.bridge, 1)
+        # self.assertEqual(new_network.bridge, 1)
         self.assertEqual(new_item.create_disk, True)
         self.assertEqual(new_item.create_path, True)
         self.assertEqual(response.status_code, 302)
@@ -98,7 +99,7 @@ class CreateVPSTest(TestCase):
         self.assertEqual(new_item.image, 2)
         self.assertEqual(new_item.memory, 1024)
         # self.assertEqual(new_item.disk, 20)
-        self.assertEqual(new_item.bridge, 1)
+        # self.assertEqual(new_item.bridge, 1)
         self.assertEqual(new_item.create_disk, True)
         self.assertEqual(new_item.create_path, True)
         self.assertEqual(response.status_code, 302)
@@ -122,8 +123,6 @@ class CreateVPSTest(TestCase):
         self.assertEqual(new_item.description, 'My description')
         self.assertEqual(new_item.image, 2)
         self.assertEqual(new_item.memory, 1024)
-        # self.assertEqual(new_item.disk, 20)
-        self.assertEqual(new_item.bridge, 1)
         self.assertEqual(new_item.create_disk, True)
         self.assertEqual(new_item.create_path, True)
         self.assertEqual(response.status_code, 302)
@@ -164,8 +163,63 @@ class CreateVPSTest(TestCase):
         self.assertTemplateUsed('viewvps.html')
         self.assertContains(response,'VPS Manager')
 
+    def test_stop_vps(self):
+        first_item = self.populate_instance()
 
+        disk = Disk()
+        disk.name = 'My old list item'
+        disk.instance = first_item
+        disk.save()
 
+        network = Network()
+        network.name = 'Another test'
+        network.instance = first_item
+        network.save()
+
+        response = self.client.get('/vps/start/1/')
+        self.assertEquals(response.status_code, 200)
+
+        status = Instance.objects.all().filter(pk=first_item.id)
+        self.assertEquals(status[0].status, 'Running')
+
+    def test_start_vps(self):
+        first_item = self.populate_instance()
+
+        disk = Disk()
+        disk.name = 'My old list item'
+        disk.instance = first_item
+        disk.save()
+
+        network = Network()
+        network.name = 'Another test'
+        network.instance = first_item
+        network.save()
+
+        response = self.client.get('/vps/stop/1/')
+        self.assertEquals(response.status_code, 200)
+
+        status = Instance.objects.all().filter(pk=first_item.id)
+        self.assertEquals(status[0].status, 'Stopped')
+
+    def test_snapshot(self):
+        first_item = self.populate_instance()
+        response = self.client.get('/vps/snapshot/1/')
+        self.assertEquals(response.status_code, 200)
+
+    @staticmethod
+    def populate_instance():
+        first_item = Instance()
+        first_item.name = 'My old list item'
+        first_item.description = 'My description'
+        first_item.image = 1
+        first_item.memory = 512
+        first_item.disk = 30
+        first_item.bridge = 2
+        first_item.status = 'Stopped'
+        first_item.create_disk = False
+        first_item.create_path = False
+        first_item.save()
+        return first_item
 
 
 class CreateUserTest(TestCase):

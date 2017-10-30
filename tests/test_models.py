@@ -13,7 +13,6 @@ class InstanceInventoryTest(TestCase):
         first_item.description = 'my instance'
         first_item.memory = 512
         first_item.disk = 20
-        first_item.bridge = 1
         first_item.console = 204
         first_item.image = 1
         first_item.path = 'mypath'
@@ -29,7 +28,6 @@ class InstanceInventoryTest(TestCase):
         second_item.description = 'my instance'
         second_item.memory = 512
         second_item.disk = 20
-        second_item.bridge = 1
         second_item.console = 204
         second_item.image = 1
         second_item.path = 'mypath'
@@ -49,7 +47,6 @@ class InstanceInventoryTest(TestCase):
         self.assertEqual(first_saved_item.name, 'Instance1')
         self.assertEqual(first_saved_item.description, 'my instance')
         self.assertEqual(first_saved_item.memory, 512)
-        self.assertEqual(first_saved_item.bridge, 1)
         self.assertEqual(first_saved_item.console, 204)
         self.assertEqual(first_saved_item.image, 1)
         self.assertEqual(first_saved_item.path, 'mypath')
@@ -61,7 +58,6 @@ class InstanceInventoryTest(TestCase):
         self.assertEqual(second_saved_item.name, 'Instance2')
         self.assertEqual(second_saved_item.description, 'my instance')
         self.assertEqual(second_saved_item.memory, 512)
-        self.assertEqual(second_saved_item.bridge, 1)
         self.assertEqual(second_saved_item.console, 204)
         self.assertEqual(second_saved_item.image, 1)
         self.assertEqual(second_saved_item.path, 'mypath')
@@ -166,7 +162,6 @@ class InstanceInventoryTest(TestCase):
         first_item.description = 'my instance'
         first_item.memory = 512
         first_item.disk = 20
-        first_item.bridge = 1
         first_item.console = 204
         first_item.image = 1
         first_item.path = 'mypath'
@@ -177,8 +172,10 @@ class InstanceInventoryTest(TestCase):
         first_item.ip = '1.2.3.4'
         first_item.save()
 
-        first_disk = Network(name='test', instance=first_item)
+        first_disk = Disk(name='test', size=20, instance=first_item)
         first_disk.save()
+        first_nw = Network(name='test', bridge=1, instance=first_item)
+        first_nw.save()
 
     def test_create_and_retrieve_instance_with_network(self):
         first_item = Instance()
@@ -197,20 +194,15 @@ class InstanceInventoryTest(TestCase):
         first_item.ip = '1.2.3.4'
         first_item.save()
 
-        first_network = Network(name='test', instance=first_item)
+        first_network = Network(name='test', bridge=1, instance=first_item)
         first_network.save()
 
         instance = Instance.objects.all().filter(pk=first_item.id)
         network = Network.objects.all().filter(instance_id=first_item.id)
 
-        first_bridge = Bridge(name='test', network=first_network)
-        first_bridge.save()
-
-        bridge = Bridge.objects.all().filter(network_id=first_network.id)
         item = instance[0]
         self.assertEqual(item.name, 'Instance1')
         self.assertEqual(network.count(), 1)
-        self.assertEqual(bridge.count(), 1)
 
     def test_vps_get_status(self):
         first_item = Instance()

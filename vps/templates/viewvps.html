@@ -41,11 +41,11 @@
 
         {% for disk in disks %}
       </div>
-      <div class="row"><label class="col-md-5">Disk:</label> {{ disk.size }} GB
+      <div class="row"><label class="col-md-5">Disk:</label> {{ disk.size }}GB
         {% endfor %}
         {% for dev in device %}
       </div>
-      <div class="row"><label class="col-md-5">Network:</label> tap{{ dev.id }} -> bridge{{ dev.3 }}
+      <div class="row"><label class="col-md-5">Network:</label> tap{{ dev.id }} -> bridge{{ dev.bridge }}
           {% if dev.4 == "UP" %}
         <a href="/vps/{{ line.id }}/start/interface/{{ dev.id }}/" class="Running"><i class="material-icons">arrow_drop_up</i></a>
           {% else %}

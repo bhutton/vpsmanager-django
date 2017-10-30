@@ -6,7 +6,7 @@ class Instance(models.Model):
     name = models.TextField(default='')
     description = models.TextField(default='')
     memory = models.IntegerField(default=0)
-    bridge = models.IntegerField(default=0)
+    # bridge = models.IntegerField(default=0)
     console = models.IntegerField(default=0)
     image = models.IntegerField(default=0)
     path = models.TextField(default='')
@@ -33,16 +33,29 @@ class Disk(models.Model):
     class Meta:
         ordering = ('id',)
 
-class Network(models.Model):
-    name = models.TextField(default='')
-    instance = models.ForeignKey(Instance, on_delete=models.CASCADE)
-
-    class Meta:
-        ordering = ('id',)
 
 class Bridge(models.Model):
     name = models.TextField(default='')
-    network = models.ForeignKey(Network, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ('id',)
+
+
+class Network(models.Model):
+    name = models.TextField(default='')
+    instance = models.ForeignKey(Instance, on_delete=models.CASCADE)
+    bridge = models.IntegerField(default=1)
+
+    class Meta:
+        ordering = ('id',)
+
+
+class InstanceControl:
+
+    @staticmethod
+    def start(instance_id):
+        return "Running"
+
+    @staticmethod
+    def stop(instance_id):
+        return "Stopped"
