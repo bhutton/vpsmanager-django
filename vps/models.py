@@ -1,3 +1,6 @@
+import base64
+
+import requests
 from django.db import models
 # from django.urls import reverse
 
@@ -59,3 +62,20 @@ class InstanceControl:
     @staticmethod
     def stop(instance_id):
         return "Stopped"
+
+    def make_call_to_vpssvr(self, path):
+        vps_server = 'http://10.128.2.1:9999'
+        vps_username = 'miguel'
+        vps_password = 'python'
+        connection_string = vps_server + path
+        try:
+            return self.open_with_auth(connection_string,
+                                       'GET', vps_username, vps_password)
+        except:
+            return "Error: was not able to connect"
+
+    def open_with_auth(self, url, method, username, password):
+        headers = {
+            'Authorization': 'Basic %s' % base64.b64encode(b"miguel:python").decode("ascii")
+        }
+        return requests.get(url, headers=headers)
