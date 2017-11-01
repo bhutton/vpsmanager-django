@@ -58,9 +58,8 @@ class InstanceControl:
     def start(self, instance_id):
         return self.make_call_to_vpssvr('/vpssvr/api/v1.0/tasks/start/' + instance_id)
 
-    @staticmethod
-    def stop(instance_id):
-        return "Stopped"
+    def stop(self, instance_id):
+        return self.make_call_to_vpssvr('/vpssvr/api/v1.0/tasks/stop/' + instance_id)
 
     def make_call_to_vpssvr(self, path):
         vps_server = 'http://10.128.2.1:9999'
