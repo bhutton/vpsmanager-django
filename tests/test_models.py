@@ -1,5 +1,6 @@
 import json
 
+import requests
 from django.test import TestCase
 from mock import patch, MagicMock, mock
 from requests import Request
@@ -143,21 +144,21 @@ class InstanceInventoryTest(TestCase):
         first_saved_item = saved_items[0]
         self.assertEqual(first_saved_item.name, 'Instance2')
 
-    # @patch('vps.models.InstanceControl.make_call_to_vpssvr')
-    # def test_make_call_to_vpssvr(self, instcon):
-    #     instcon.return_value = MagicMock(spec=Request, status_code=200, response={'status':'Running'})
-    #     vps = InstanceControl()
-    #     return_value = vps.make_call_to_vpssvr('/vpssvr/api/v1.0/tasks/status/606')
-    #     assert "Running" in return_value.response['status']
-    #     self.assertEquals(return_value.status_code, 200)
+    @patch.object(requests,'get')
+    def test_make_call_to_vpssvr(self, mock_make_call_to_vpssvr):
+        # Mocking rest call and json return value
+        attrs = {'json.return_value': {'status': 'Running'}}
+        mock_make_call_to_vpssvr.return_value = MagicMock(**attrs)
+
+        vps = InstanceControl()
+        return_value = vps.make_call_to_vpssvr('/vpssvr/api/v1.0/tasks/status/606').json()
+        assert "Running" in return_value['status']
 
     # This test to be used for Integrations test
-    #
-    # def test_make_call_to_vpssvr_live(self):
-    #     # instcon.return_value = MagicMock(spec=Response, status_code=200, response=json.dumps({'status':'Running'}))
-    #     vps = InstanceControl()
-    #     return_value = vps.make_call_to_vpssvr('/vpssvr/api/v1.0/tasks/status/606')
-    #     assert "Running" in return_value.json()['status']
+    def test_make_call_to_vpssvr_live(self):
+        vps = InstanceControl()
+        return_value = vps.make_call_to_vpssvr('/vpssvr/api/v1.0/tasks/status/606')
+        assert "Running" in return_value.json()['status']
 
     def populate_db(self):
         first_item = Instance()
