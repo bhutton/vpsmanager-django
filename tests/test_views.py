@@ -176,11 +176,11 @@ class CreateVPSTest(TestCase):
         network.instance = first_item
         network.save()
 
-        response = self.client.get('/vps/start/1/')
+        response = self.client.get('/vps/stop/608')
         self.assertEquals(response.status_code, 200)
 
         status = Instance.objects.all().filter(pk=first_item.id)
-        self.assertEquals(status[0].status, 'Running')
+        self.assertEquals(status[0].status, 'Stopped')
 
     def test_start_vps(self):
         first_item = self.populate_instance()
@@ -195,7 +195,7 @@ class CreateVPSTest(TestCase):
         network.instance = first_item
         network.save()
 
-        response = self.client.get('/vps/stop/1/')
+        response = self.client.get('/vps/stop/608/')
         self.assertEquals(response.status_code, 200)
 
         status = Instance.objects.all().filter(pk=first_item.id)
@@ -203,12 +203,13 @@ class CreateVPSTest(TestCase):
 
     def test_snapshot(self):
         first_item = self.populate_instance()
-        response = self.client.get('/vps/snapshot/1/')
+        response = self.client.get('/vps/snapshot/608/')
         self.assertEquals(response.status_code, 200)
 
     @staticmethod
     def populate_instance():
         first_item = Instance()
+        first_item.id = 608
         first_item.name = 'My old list item'
         first_item.description = 'My description'
         first_item.image = 1

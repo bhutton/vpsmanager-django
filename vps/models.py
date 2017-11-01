@@ -55,9 +55,8 @@ class Network(models.Model):
 
 class InstanceControl:
 
-    @staticmethod
-    def start(instance_id):
-        return "Running"
+    def start(self, instance_id):
+        return self.make_call_to_vpssvr('/vpssvr/api/v1.0/tasks/start/' + instance_id)
 
     @staticmethod
     def stop(instance_id):

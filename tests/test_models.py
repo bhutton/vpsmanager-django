@@ -151,14 +151,14 @@ class InstanceInventoryTest(TestCase):
         mock_make_call_to_vpssvr.return_value = MagicMock(**attrs)
 
         vps = InstanceControl()
-        return_value = vps.make_call_to_vpssvr('/vpssvr/api/v1.0/tasks/status/606').json()
+        return_value = vps.make_call_to_vpssvr('/vpssvr/api/v1.0/tasks/status/1').json()
         assert "Running" in return_value['status']
 
     # This test to be used for Integrations test
-    def test_make_call_to_vpssvr_live(self):
-        vps = InstanceControl()
-        return_value = vps.make_call_to_vpssvr('/vpssvr/api/v1.0/tasks/status/606')
-        assert "Running" in return_value.json()['status']
+    # def test_make_call_to_vpssvr_live(self):
+    #     vps = InstanceControl()
+    #     return_value = vps.make_call_to_vpssvr('/vpssvr/api/v1.0/tasks/status/606')
+    #     assert "Running" in return_value.json()['status']
 
     def populate_db(self):
         first_item = Instance()
