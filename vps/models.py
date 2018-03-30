@@ -61,6 +61,9 @@ class InstanceControl:
     def stop(self, instance_id):
         return self.make_call_to_vpssvr('/vpssvr/api/v1.0/tasks/stop/' + instance_id)
 
+    def status(self, instance_id):
+        return self.make_call_to_vpssvr('/vpssvr/api/v1.0/tasks/status/' + instance_id)
+
     def make_call_to_vpssvr(self, path):
         vps_server = 'http://10.128.2.1:9999'
         vps_username = 'miguel'

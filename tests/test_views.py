@@ -7,29 +7,29 @@ from vps.views import home_page
 from vps.models import Instance, Disk, Network
 
 
-class HomePageTest(TestCase):
-
-
-    def test_home_page_renders_homepage(self):
-        response = self.client.get('/')
-        self.assertTemplateUsed(response, 'home.html')
-
-    def test_home_page_returns_correct_html(self):
-        request = HttpRequest()
-        response = home_page(request)
-        expected_html = render_to_string('home.html')
-        self.assertEqual(response.content.decode(), expected_html)
-
-    def test_home_page_contains_list_table(self):
-        request = HttpRequest()
-        response = home_page(request)
-        self.assertIn('VPS Manager', response.content.decode())
-
-    def test_home_page_contains_list_items(self):
-        response = self.client.get('/vps/create/')
-        self.assertTemplateUsed(response, 'createvps.html')
-        self.assertTemplateUsed(response, 'base.html')
-        self.assertIn('Enter Instance Name', response.content.decode())
+# class HomePageTest(TestCase):
+#
+#
+#     def test_home_page_renders_homepage(self):
+#         response = self.client.get('/')
+#         self.assertTemplateUsed(response, 'home.html')
+#
+#     def test_home_page_returns_correct_html(self):
+#         request = HttpRequest()
+#         response = home_page(request)
+#         expected_html = render_to_string('home.html')
+#         self.assertEqual(response.content.decode(), expected_html)
+#
+#     def test_home_page_contains_list_table(self):
+#         request = HttpRequest()
+#         response = home_page(request)
+#         self.assertIn('VPS Manager', response.content.decode())
+#
+#     def test_home_page_contains_list_items(self):
+#         response = self.client.get('/vps/create/')
+#         self.assertTemplateUsed(response, 'createvps.html')
+#         self.assertTemplateUsed(response, 'base.html')
+#         self.assertIn('Enter Instance Name', response.content.decode())
 
 
 class CreateVPSTest(TestCase):

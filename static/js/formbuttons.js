@@ -1,14 +1,14 @@
-$(function(){
-    $('#btnCreateVPS').click(function(){
+$(function() {
+    $('#btnCreateVPS').click(function() {
 
         // Form validation - user must enter Name and Description for processing to occur
 
-        if (document.forms["vps"]["name"].value == "") {
+        if (document.forms["vps"]["name"].value === "") {
             document.getElementById("valName").innerHTML = "Name must be filled out";
             return(false)
         }
 
-        if (document.forms["vps"]["description"].value == "") {
+        if (document.forms["vps"]["description"].value === "") {
             document.getElementById("valDescription").innerHTML = "Description must be filled out";
             return(false)
         }
@@ -35,7 +35,7 @@ $(function(){
         });
     });
 
-    $('#btnUpdateVPS').click(function(){
+    $('#btnUpdateVPS').click(function() {
         
         $.ajax({
             url: '/updateVPS',
@@ -50,7 +50,7 @@ $(function(){
         });
     });
 
-    $('#btnCreateDisk').click(function(){
+    $('#btnCreateDisk').click(function() {
         
         $.ajax({
             url: '/createDisk',
@@ -65,7 +65,7 @@ $(function(){
         });
     });
 
-    $('#btnUpdateDisk').click(function(){
+    $('#btnUpdateDisk').click(function() {
         
         $.ajax({
             url: '/updateDisk',
@@ -80,7 +80,7 @@ $(function(){
         });
     });
 
-    $('#btnCreateNetwork').click(function(){
+    $('#btnCreateNetwork').click(function() {
         
         $.ajax({
             url: '/createNetwork',
@@ -95,7 +95,7 @@ $(function(){
         });
     });
 
-    $('#btnCreateUser').click(function(){
+    $('#btnCreateUser').click(function() {
 
         if (document.forms["createUser"]["inputName"].value == "") {
             document.getElementById("valName").innerHTML = "Name must be filled out";
@@ -127,7 +127,7 @@ $(function(){
         });
     });
 
-    $('#btnUpdateUser').click(function(){
+    $('#btnUpdateUser').click(function() {
         
         $.ajax({
             url: '/updateUser',

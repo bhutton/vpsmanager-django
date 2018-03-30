@@ -151,6 +151,26 @@ def stop_vps(request, id):
         'device': device,
     })
 
+def status_vps(request, id):
+    vps = InstanceControl()
+    status = vps.status(id)
+
+    saved_items = Instance.objects.get(pk=id)
+    existing_items = saved_items
+    existing_items.status = status
+    saved_items.save()
+
+    instance = Instance.objects.all().filter(pk=id)
+    disks = Disk.objects.all().filter(instance_id=instance[0].id)
+    device = Network.objects.all().filter(instance_id=instance[0].id)
+
+
+    return render(request, 'viewvps.html', {
+        'row': instance,
+        'disks': disks,
+        'device': device,
+    })
+
 def snapshot_vps(request, id):
     instance = Instance.objects.all().filter(pk=id)
     disks = Disk.objects.all().filter(instance_id=instance[0].id)

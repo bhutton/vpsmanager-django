@@ -101,7 +101,6 @@ class InstanceInventoryTest(TestCase):
         self.assertEqual(item.name, 'Instance1')
         self.assertEqual(disk.count(), 1)
 
-
     def test_create_instance_with_network(self):
         first_item = self.populate_db()
 
@@ -122,13 +121,6 @@ class InstanceInventoryTest(TestCase):
         item = instance[0]
         self.assertEqual(item.name, 'Instance1')
         self.assertEqual(network.count(), 1)
-
-    def test_vps_get_status(self):
-        first_item = self.populate_db()
-
-        instance = Instance.objects.all().filter(pk=first_item.id)
-        item = instance[0]
-        self.assertEqual(item.status, 'Stopped')
 
     def test_update_item(self):
         first_item = self.populate_db()
@@ -152,6 +144,16 @@ class InstanceInventoryTest(TestCase):
 
         vps = InstanceControl()
         return_value = vps.make_call_to_vpssvr('/vpssvr/api/v1.0/tasks/status/1').json()
+        assert "Running" in return_value['status']
+
+    @patch.object(requests, 'get')
+    def test_get_status(self, mock_make_call_to_vpssvr):
+        # Mocking rest call and json return value
+        attrs = {'json.return_value': {'status': 'Running'}}
+        mock_make_call_to_vpssvr.return_value = MagicMock(**attrs)
+
+        vps = InstanceControl()
+        return_value = vps.make_call_to_vpssvr('/vpssvr/api/v1.0/tasks/status/608').json()
         assert "Running" in return_value['status']
 
     # This test to be used for Integrations test

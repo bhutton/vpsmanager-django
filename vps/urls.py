@@ -24,4 +24,5 @@ urlpatterns = [
     url(r'^start/([0-9]+)', views.start_vps, name='startvps'),
     url(r'^stop/([0-9]+)', views.stop_vps, name='stopvps'),
     url(r'^snapshot/([0-9]+)', views.snapshot_vps, name='snapshot'),
+    url(r'^status/([0-9]+)', views.status_vps, name='status')
 ]
