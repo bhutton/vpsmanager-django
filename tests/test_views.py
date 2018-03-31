@@ -2,9 +2,10 @@ from django.template.loader import render_to_string
 from django.test import TestCase
 from django.http import HttpRequest
 from django.db import models
+from mock import mock
 
 from vps.views import home_page
-from vps.models import Instance, Disk, Network
+from vps.models import Instance, Disk, Network, InstanceControl
 
 
 # class HomePageTest(TestCase):
@@ -163,7 +164,10 @@ class CreateVPSTest(TestCase):
         self.assertTemplateUsed('viewvps.html')
         self.assertContains(response,'VPS Manager')
 
-    def test_stop_vps(self):
+    @mock.patch('vps.models.InstanceControl.make_call_to_vpssvr')
+    def test_stop_vps(self, fake_make_call_to_vpssvr):
+        fake_make_call_to_vpssvr.return_value = True
+
         first_item = self.populate_instance()
 
         disk = Disk()
@@ -182,7 +186,10 @@ class CreateVPSTest(TestCase):
         # status = Instance.objects.all().filter(pk=first_item.id)
         # self.assertEquals(status[0].status, 'Stopped')
 
-    def test_start_vps(self):
+    @mock.patch('vps.models.InstanceControl.make_call_to_vpssvr')
+    def test_start_vps(self, fake_make_call_to_vpssvr):
+        fake_make_call_to_vpssvr.return_value = True
+
         first_item = self.populate_instance()
 
         disk = Disk()
