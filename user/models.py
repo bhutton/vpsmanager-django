@@ -25,11 +25,12 @@ from django.urls import reverse
         # unique_together = ('name','path')
 
 class User(models.Model):
-    uid = models.IntegerField(default=0)
+    username = models.TextField(default='')
+    password = models.TextField(default='')
 
     def __str__(self):
-        return self.uid
+        return self.username
 
     class Meta:
-        ordering = ('uid',)
+        ordering = ('username',)
 

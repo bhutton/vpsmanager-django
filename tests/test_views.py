@@ -1,15 +1,11 @@
 from django.template.loader import render_to_string
 from django.test import TestCase
-from django.http import HttpRequest
-from django.db import models
 from mock import mock
 
-from vps.views import home_page
 from vps.models import Instance, Disk, Network, InstanceControl
 
 
 class HomePageTest(TestCase):
-
 
     def test_home_page_renders_homepage(self):
         response = self.client.get('/')
@@ -17,23 +13,6 @@ class HomePageTest(TestCase):
         self.assertIn('VPS Manager', response.content.decode())
         self.assertIn('Home', response.content.decode())
         self.assertIn('Users', response.content.decode())
-
-#     def test_home_page_returns_correct_html(self):
-#         request = HttpRequest()
-#         response = home_page(request)
-#         expected_html = render_to_string('home.html')
-#         self.assertEqual(response.content.decode(), expected_html)
-#
-#     def test_home_page_contains_list_table(self):
-#         request = HttpRequest()
-#         response = home_page(request)
-#         self.assertIn('VPS Manager', response.content.decode())
-#
-#     def test_home_page_contains_list_items(self):
-#         response = self.client.get('/vps/create/')
-#         self.assertTemplateUsed(response, 'createvps.html')
-#         self.assertTemplateUsed(response, 'base.html')
-#         self.assertIn('Enter Instance Name', response.content.decode())
 
 
 class CreateVPSTest(TestCase):
@@ -80,7 +59,6 @@ class CreateVPSTest(TestCase):
         self.assertEqual(new_item.create_path, True)
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['location'], '/')
-
 
     def test_vps_user_can_update_instance(self):
         self.populate_instances()
@@ -208,9 +186,6 @@ class CreateVPSTest(TestCase):
         response = self.client.get('/vps/stop/608/')
         self.assertEquals(response.status_code, 200)
 
-        # status = Instance.objects.all().filter(pk=first_item.id)
-        # self.assertEquals(status[0].status, 'Stopped')
-
     def test_snapshot(self):
         first_item = self.populate_instance()
         response = self.client.get('/vps/snapshot/608/')
@@ -239,7 +214,7 @@ class UserTest(TestCase):
         response = self.client.get('/user/create/')
         self.assertTemplateUsed(response, 'createuser.html')
         expected_html = render_to_string('createuser.html')
-        # self.assertEqual(response.content.decode(), expected_html)
+        self.assertIn('User Name', response.content.decode())
 
     def test_modify_user_renders_form(self):
         response = self.client.get('/user/modify/')

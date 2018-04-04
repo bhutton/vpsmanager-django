@@ -1,10 +1,18 @@
 from django.shortcuts import redirect, render
 
+from user.models import User
+
 CHECKBOX_MAPPING = {'on': True,
                     'off': False, }
 
 
 def create_user(request):
+    if request.method == 'POST':
+        new_username = request.POST['username']
+        new_password = request.POST['password']
+        item = User.objects.create(username=new_username, password=new_password)
+        return redirect('/')
+
     return render(request, 'createuser.html')
 
 

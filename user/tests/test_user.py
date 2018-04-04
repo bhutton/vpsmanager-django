@@ -27,4 +27,10 @@ class UserModelTest(TestCase):
     def populate_users(self):
         first_item = User()
 
-    # def test_create_user(self):
+    def test_create_user(self):
+        response = self.client.post('/user/create/',
+                                    data={'username': 'fredbloggs','password': 'abc123'})
+        self.assertEqual(User.objects.count(), 1)
+        new_item = User.objects.first()
+        self.assertEqual(new_item.username,'fredbloggs')
+        self.assertEqual(new_item.password, 'abc123')
