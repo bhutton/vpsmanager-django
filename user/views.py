@@ -22,3 +22,6 @@ def modify_user(request):
 
 def view_user(request, username):
     return render(request, 'viewuser.html')
+
+def list_user(request):
+    return render(request, 'listuser.html')

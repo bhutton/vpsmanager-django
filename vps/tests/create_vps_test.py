@@ -41,13 +41,10 @@ class CreateVPSTest(TestCase):
         self.assertEqual(new_item.description, 'My description')
         self.assertEqual(new_item.image, 1)
         self.assertEqual(new_item.memory, 512)
-        # self.assertEqual(new_item.disk, 20)
-        # self.assertEqual(new_network.bridge, 1)
         self.assertEqual(new_item.create_disk, True)
         self.assertEqual(new_item.create_path, True)
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['location'], '/')
-
 
     def test_vps_user_can_update_instance(self):
         self.populate_instances()

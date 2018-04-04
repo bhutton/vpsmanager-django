@@ -8,6 +8,13 @@ from user.models import User
 
 class UserViewTest(TestCase):
 
+    def test_list_users(self):
+        response = self.client.get('/user/')
+        self.assertTemplateUsed(response, 'listuser.html')
+
+
+class UserCreateTest(TestCase):
+
     def test_create_user_renders_form(self):
         response = self.client.get('/user/create/')
         self.assertTemplateUsed(response, 'createuser.html')

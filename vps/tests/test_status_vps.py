@@ -24,7 +24,6 @@ class TestStatusVPS(TestCase):
         second_item.size = int(30)
         second_item.save()
 
-
     def test_status_all_vps(self):
         self.populate_instances()
         response = self.client.get('/')
@@ -43,4 +42,3 @@ class TestStatusVPS(TestCase):
         self.assertIn('512', response.content.decode())
         self.assertIn('30', response.content.decode())
         self.assertIn('2', response.content.decode())
-
