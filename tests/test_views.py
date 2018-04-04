@@ -2,6 +2,7 @@ from django.template.loader import render_to_string
 from django.test import TestCase
 from mock import mock
 
+from user.models import User
 from vps.models import Instance, Disk, Network, InstanceControl
 
 
@@ -219,4 +220,15 @@ class UserTest(TestCase):
     def test_modify_user_renders_form(self):
         response = self.client.get('/user/modify/')
         self.assertTemplateUsed(response, 'modifyuser.html')
+
+    def test_vps_view_instance(self):
+        first_item = User()
+        first_item.name = 'fredbloggs'
+        first_item.description = 'abc123'
+        first_item.save()
+
+        response = self.client.get('/user/1/')
+        self.assertEquals(response.status_code, 200)
+        # self.assertTemplateUsed('viewvps.html')
+        # self.assertContains(response,'VPS Manager')
 

@@ -17,7 +17,7 @@ from django.conf.urls import url
 from user import views
 
 urlpatterns = [
-	# url(r'^(\d+)/$', views.Instance, name='view_createvps'),
+    url(r'^(\d+)/$', views.view_user, name='view_user'),
     url(r'^create/', views.create_user, name='createuser'),
     url(r'^modify/', views.modify_user, name='modifyuser'),
 ]
