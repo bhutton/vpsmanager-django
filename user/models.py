@@ -24,4 +24,12 @@ from django.urls import reverse
 #         ordering = ('id',)
         # unique_together = ('name','path')
 
+class User(models.Model):
+    uid = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.uid
+
+    class Meta:
+        ordering = ('uid',)
 

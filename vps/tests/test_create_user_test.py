@@ -16,7 +16,7 @@ class CreateUserTest(TestCase):
         response = self.client.get('/user/create/')
         self.assertTemplateUsed(response, 'createuser.html')
         expected_html = render_to_string('createuser.html')
-        self.assertEqual(response.content.decode(), expected_html)
+        self.assertIn('Enter User Name', response.content.decode())
 
 
 

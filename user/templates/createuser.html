@@ -1,10 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Create User</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block content %}
+<a href="/"><i class="material-icons md-18">keyboard_backspace</i></a>
+
+<div class="container">
+
+    <form name="vps" method="POST" class="form-horizontal">
+        <div class="form-group row">
+            <label for="name" class="col-sm-4 control-label">Name</label>
+            <div class="col-sm-7">
+                <input class="form-control" name="item_name" id="id_item_name" placeholder="Enter User Name"
+                       required onchange="return validateVPSName()"/>
+                <p id="valName"></p></td>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-7">
+                <input name="item_submit" class="btn btn-lg btn-primary btn-block" id="item_submit" type="submit"
+                       value="Create VPS">
+            </div>
+        </div>
+        {% csrf_token %}
+    </form>
+{% endblock %}

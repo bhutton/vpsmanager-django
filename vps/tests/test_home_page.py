@@ -1,4 +1,5 @@
-from unittest import TestCase
+from django.test import TestCase
+
 
 from django.http import HttpRequest
 from django.template.loader import render_to_string
@@ -7,7 +8,6 @@ from vps.views import home_page
 
 
 class HomePageTest(TestCase):
-
 
     def test_home_page_renders_homepage(self):
         response = self.client.get('/')

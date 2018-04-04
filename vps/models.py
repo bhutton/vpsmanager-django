@@ -80,3 +80,5 @@ class InstanceControl:
             'Authorization': 'Basic %s' % base64.b64encode(b"miguel:python").decode("ascii")
         }
         return requests.get(url, headers=headers)
+
+
