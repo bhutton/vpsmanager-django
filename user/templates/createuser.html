@@ -16,6 +16,24 @@
         </div>
 
         <div class="form-group row">
+            <label for="name" class="col-sm-4 control-label">Password</label>
+            <div class="col-sm-7">
+                <input type="password" class="form-control" name="password" id="id_item_name" placeholder="Enter Password"
+                       required onchange="return validateVPSName()"/>
+                <p id="valName"></p></td>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="name" class="col-sm-4 control-label">Again</label>
+            <div class="col-sm-7">
+                <input type="password" class="form-control" name="again" id="id_item_name" placeholder="Enter Password Again"
+                       required onchange="return validateVPSName()"/>
+                <p id="valName"></p></td>
+            </div>
+        </div>
+
+        <div class="form-group row">
             <div class="col-sm-4"></div>
             <div class="col-sm-7">
                 <input name="item_submit" class="btn btn-lg btn-primary btn-block" id="item_submit" type="submit"

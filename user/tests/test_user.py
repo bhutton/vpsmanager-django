@@ -13,6 +13,9 @@ class UserViewTest(TestCase):
         self.assertTemplateUsed(response, 'createuser.html')
         expected_html = render_to_string('createuser.html')
         self.assertIn('Enter User Name', response.content.decode())
+        self.assertIn('Enter Password', response.content.decode())
+        self.assertIn('Enter Password Again', response.content.decode())
+
 
     def test_modify_user_renders_form(self):
         response = self.client.get('/user/modify/')

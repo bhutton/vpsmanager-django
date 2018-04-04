@@ -8,13 +8,16 @@ from vps.views import home_page
 from vps.models import Instance, Disk, Network, InstanceControl
 
 
-# class HomePageTest(TestCase):
-#
-#
-#     def test_home_page_renders_homepage(self):
-#         response = self.client.get('/')
-#         self.assertTemplateUsed(response, 'home.html')
-#
+class HomePageTest(TestCase):
+
+
+    def test_home_page_renders_homepage(self):
+        response = self.client.get('/')
+        self.assertTemplateUsed(response, 'home.html')
+        self.assertIn('VPS Manager', response.content.decode())
+        self.assertIn('Home', response.content.decode())
+        self.assertIn('Users', response.content.decode())
+
 #     def test_home_page_returns_correct_html(self):
 #         request = HttpRequest()
 #         response = home_page(request)
