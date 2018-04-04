@@ -19,4 +19,5 @@ from user import views
 urlpatterns = [
 	# url(r'^(\d+)/$', views.Instance, name='view_createvps'),
     url(r'^create/', views.create_user, name='createuser'),
+    url(r'^modify/', views.modify_user, name='modifyuser'),
 ]

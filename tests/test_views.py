@@ -230,7 +230,7 @@ class CreateVPSTest(TestCase):
         return first_item
 
 
-class CreateUserTest(TestCase):
+class UserTest(TestCase):
 
     def test_create_user_renders_form(self):
         response = self.client.get('/user/create/')
@@ -238,8 +238,7 @@ class CreateUserTest(TestCase):
         expected_html = render_to_string('createuser.html')
         self.assertEqual(response.content.decode(), expected_html)
 
+    def test_modify_user_renders_form(self):
+        response = self.client.get('/user/modify/')
+        self.assertTemplateUsed(response, 'modifyuser.html')
 
-
-# class HomePageTest(TestCase):
-#
-#     def test_home

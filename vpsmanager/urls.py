@@ -18,14 +18,12 @@ from django.contrib import admin
 
 from vps import views
 from vps import urls as vps_urls
+from user import urls as user_urls
 
 
 urlpatterns = [
     url(r'^$', views.home_page, name='home'),
-    # url(r'^vps/', include('vps.urls')),
     url(r'^vps/', include(vps_urls)),
-    # url(r'^createvps/', views.create_vps, name='createvps'),
-    url(r'^user/', views.create_user, name='createuser'),
-    # url(r'^lists/', include(vps_urls)),
+    url(r'^user/', include(user_urls)),
     # url(r'^admin/', admin.site.urls),
 ]
