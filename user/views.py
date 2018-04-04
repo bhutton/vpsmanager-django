@@ -19,5 +19,6 @@ def create_user(request):
 def modify_user(request):
     return render(request, 'modifyuser.html')
 
+
 def view_user(request, username):
     return render(request, 'viewuser.html')

@@ -39,7 +39,7 @@ def create_vps(request):
             create_path=new_item_create_path
         )
 
-        Disk.objects.create(name='', instance=item)
+        Disk.objects.create(name='', instance=item, size=int(new_item_disk))
         Network.objects.create(name='', bridge=new_item_bridge, instance=item)
 
         return redirect('/')
@@ -70,7 +70,6 @@ def modify_vps(request,id):
             new_item_create_path = CHECKBOX_MAPPING.get(request.POST['item_create_path'])
         except:
             new_item_create_path = False
-
 
         saved_items = Instance.objects.get(pk=id)
         existing_items = saved_items
@@ -170,6 +169,7 @@ def status_vps(request, id):
         'disks': disks,
         'device': device,
     })
+
 
 def snapshot_vps(request, id):
     instance = Instance.objects.all().filter(pk=id)

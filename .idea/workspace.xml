@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="23a2f58e-d6aa-4d02-842e-14622abb3d35" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/user/templates/viewuser.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vps/tests/test_status_vps.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vps/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/vps/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,7 +18,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/vpsmanager$Unittests_in_functional_tests_py.coverage" NAME="Unittests in functional_tests.py Coverage Results" MODIFIED="1511174582326" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/vpsmanager$Test__tests_test_views_CreateVPSTest_test_start_vps.coverage" NAME="Test: tests.test_views.CreateVPSTest.test_start_vps Coverage Results" MODIFIED="1522507085921" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/vpsmanager$Unit_Tests.coverage" NAME="Unit Tests Coverage Results" MODIFIED="1522835811457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/vpsmanager$Unit_Tests.coverage" NAME="Unit Tests Coverage Results" MODIFIED="1522848641253" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/vpsmanager$Test__tests_test_views_UserTest_test_modify_user_renders_form.coverage" NAME="Test: tests.test_views.UserTest.test_modify_user_renders_form Coverage Results" MODIFIED="1522809625221" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
@@ -29,10 +29,31 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vps/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="86">
-              <caret line="102" column="4" selection-start-line="102" selection-start-column="4" selection-end-line="102" selection-end-column="4" />
+            <state relative-caret-position="615">
+              <caret line="41" column="75" selection-start-line="41" selection-start-column="75" selection-end-line="41" selection-end-column="75" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="createvps.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vps/templates/createvps.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="54" column="37" selection-start-line="54" selection-start-column="35" selection-end-line="54" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_status_vps.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/vps/tests/test_status_vps.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="106">
+              <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -41,8 +62,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/user/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="41" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
+            <state relative-caret-position="240">
+              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
               </folding>
@@ -59,27 +80,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modifyuser.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/user/templates/modifyuser.html">
+      <file leaf-file-name="viewuser.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user/templates/viewuser.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="13" selection-start-line="13" selection-end-line="14" />
+            <state relative-caret-position="135">
+              <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="viewuser.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/user/templates/viewuser.html">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/user/models.py">
+        <entry file="file://$PROJECT_DIR$/vps/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="28" column="43" lean-forward="true" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
+            <state relative-caret-position="287">
+              <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
               <folding>
-                <element signature="e#0#28#0" expanded="true" />
+                <element signature="e#0#13#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -100,8 +116,8 @@
       <file leaf-file-name="create_vps_test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vps/tests/create_vps_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="134" column="51" lean-forward="true" selection-start-line="109" selection-start-column="4" selection-end-line="134" selection-end-column="51" />
+            <state relative-caret-position="111">
+              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -116,19 +132,6 @@
               <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
               <folding>
                 <element signature="e#619#651#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/test_views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="229" column="39" lean-forward="true" selection-start-line="229" selection-start-column="39" selection-end-line="229" selection-end-column="39" />
-              <folding>
-                <element signature="e#0#51#0" expanded="true" />
-                <marker date="1522835530398" expanded="true" signature="8982:9033" ph="..." />
               </folding>
             </state>
           </provider>
@@ -150,13 +153,14 @@
       <find>include_package_data</find>
       <find>static</find>
       <find>bridge</find>
-      <find>disk</find>
       <find>path</find>
       <find>512MB</find>
       <find>required</find>
       <find>Instance</find>
       <find>network</find>
       <find>start</find>
+      <find>Disk</find>
+      <find>disk</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -176,12 +180,10 @@
         <option value="$PROJECT_DIR$/vps/templates/home.html" />
         <option value="$PROJECT_DIR$/static/css/base.css" />
         <option value="$PROJECT_DIR$/vps/templates/viewvps.html" />
-        <option value="$PROJECT_DIR$/vps/views.py" />
         <option value="$PROJECT_DIR$/static/js/formbuttons.js" />
         <option value="$PROJECT_DIR$/tests/test_models.py" />
         <option value="$PROJECT_DIR$/vps/tests/test_views.py" />
         <option value="$PROJECT_DIR$/vpsmanager/urls.py" />
-        <option value="$PROJECT_DIR$/vps/tests/create_vps_test.py" />
         <option value="$PROJECT_DIR$/vps/tests/test_home_page.py" />
         <option value="$PROJECT_DIR$/vps/models.py" />
         <option value="$PROJECT_DIR$/vps/tests/test_create_user_test.py" />
@@ -194,6 +196,10 @@
         <option value="$PROJECT_DIR$/user/urls.py" />
         <option value="$PROJECT_DIR$/vps/urls.py" />
         <option value="$PROJECT_DIR$/user/views.py" />
+        <option value="$PROJECT_DIR$/vps/test_status_vps.py" />
+        <option value="$PROJECT_DIR$/vps/tests/create_vps_test.py" />
+        <option value="$PROJECT_DIR$/vps/views.py" />
+        <option value="$PROJECT_DIR$/vps/tests/test_status_vps.py" />
       </list>
     </option>
   </component>
@@ -311,6 +317,7 @@
       <recent name="$PROJECT_DIR$/vps/migrations" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/vps/tests" />
       <recent name="$PROJECT_DIR$/user/templates" />
       <recent name="$PROJECT_DIR$/vps" />
       <recent name="$PROJECT_DIR$" />
@@ -662,43 +669,51 @@
       <option name="project" value="LOCAL" />
       <updated>1522835019203</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Added viewuser in views">
+      <created>1522835830383</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1522835830383</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unit_Tests - 2018.04.04 at 17h 41m 46s.xml">
+    <history-entry file="Unit_Tests - 2018.04.04 at 20h 14m 56s.xml">
       <configuration name="Unit Tests" configurationId="DjangoTestsConfigurationType" />
     </history-entry>
-    <history-entry file="Unit_Tests - 2018.04.04 at 17h 42m 17s.xml">
+    <history-entry file="Unit_Tests - 2018.04.04 at 20h 15m 04s.xml">
       <configuration name="Unit Tests" configurationId="DjangoTestsConfigurationType" />
     </history-entry>
-    <history-entry file="Unit_Tests - 2018.04.04 at 17h 43m 25s.xml">
+    <history-entry file="Unit_Tests - 2018.04.04 at 21h 27m 18s.xml">
       <configuration name="Unit Tests" configurationId="DjangoTestsConfigurationType" />
     </history-entry>
-    <history-entry file="Unit_Tests - 2018.04.04 at 17h 52m 11s.xml">
+    <history-entry file="Unit_Tests - 2018.04.04 at 21h 27m 29s.xml">
       <configuration name="Unit Tests" configurationId="DjangoTestsConfigurationType" />
     </history-entry>
-    <history-entry file="Unit_Tests - 2018.04.04 at 17h 53m 51s.xml">
+    <history-entry file="Unit_Tests - 2018.04.04 at 21h 27m 34s.xml">
       <configuration name="Unit Tests" configurationId="DjangoTestsConfigurationType" />
     </history-entry>
-    <history-entry file="Unit_Tests - 2018.04.04 at 17h 54m 16s.xml">
+    <history-entry file="Unit_Tests - 2018.04.04 at 21h 28m 35s.xml">
       <configuration name="Unit Tests" configurationId="DjangoTestsConfigurationType" />
     </history-entry>
-    <history-entry file="Unit_Tests - 2018.04.04 at 17h 55m 17s.xml">
+    <history-entry file="Unit_Tests - 2018.04.04 at 21h 28m 38s.xml">
       <configuration name="Unit Tests" configurationId="DjangoTestsConfigurationType" />
     </history-entry>
-    <history-entry file="Unit_Tests - 2018.04.04 at 17h 55m 47s.xml">
+    <history-entry file="Unit_Tests - 2018.04.04 at 21h 28m 51s.xml">
       <configuration name="Unit Tests" configurationId="DjangoTestsConfigurationType" />
     </history-entry>
-    <history-entry file="Unit_Tests - 2018.04.04 at 17h 56m 10s.xml">
+    <history-entry file="Unit_Tests - 2018.04.04 at 21h 28m 54s.xml">
       <configuration name="Unit Tests" configurationId="DjangoTestsConfigurationType" />
     </history-entry>
-    <history-entry file="Unit_Tests - 2018.04.04 at 17h 56m 52s.xml">
+    <history-entry file="Unit_Tests - 2018.04.04 at 21h 30m 42s.xml">
       <configuration name="Unit Tests" configurationId="DjangoTestsConfigurationType" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="815" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -777,7 +792,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added create_path and create_disk model and view." />
     <MESSAGE value="Improved functional test for vps creation.&#10;Added logic for create disk and path checkboxes." />
     <MESSAGE value="Worked out cleaner way of doing checkbox mapping." />
     <MESSAGE value="Modified unittest to work with CHECKBOX_MAPPING directive.  View now accepts 'on' and 'off' instead of True or False in line with form checkbox." />
@@ -802,7 +816,8 @@
     <MESSAGE value="Styled createuser and modify user and adjusted tests to suite." />
     <MESSAGE value="Added menu bar" />
     <MESSAGE value="Added create user model and tests." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added create user model and tests." />
+    <MESSAGE value="Added viewuser in views" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added viewuser in views" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -813,16 +828,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vps/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="23" column="35" lean-forward="true" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
-          <folding>
-            <element signature="e#619#651#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
@@ -1018,16 +1023,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vps/tests/test_home_page.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vps/tests/test_create_user_test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -1035,13 +1030,6 @@
           <folding>
             <element signature="e#0#51#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vps/templates/createvps.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="94" selection-start-line="94" selection-end-line="94" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -1076,32 +1064,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vps/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="23" column="24" lean-forward="true" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/user/tests/test_user.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vps/tests/create_vps_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="134" column="51" lean-forward="true" selection-start-line="109" selection-start-column="4" selection-end-line="134" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1127,13 +1095,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user/urls.py">
+    <entry file="file://$PROJECT_DIR$/user/templates/modifyuser.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="21" column="59" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
-          <folding>
-            <element signature="e#619#651#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="154">
+          <caret line="13" selection-start-line="13" selection-end-line="14" />
         </state>
       </provider>
     </entry>
@@ -1147,20 +1112,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vps/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="102" column="4" selection-start-line="102" selection-start-column="4" selection-end-line="102" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/user/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="41" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
+        <state relative-caret-position="240">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
           </folding>
@@ -1174,15 +1129,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user/templates/modifyuser.html">
+    <entry file="file://$PROJECT_DIR$/user/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="13" selection-start-line="13" selection-end-line="14" />
+        <state relative-caret-position="297">
+          <caret line="21" column="59" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
+          <folding>
+            <element signature="e#619#651#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vps/tests/test_home_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="32" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/user/templates/viewuser.html">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vps/tests/create_vps_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vps/templates/createvps.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="54" column="37" selection-start-line="54" selection-start-column="35" selection-end-line="54" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vps/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="41" column="75" selection-start-line="41" selection-start-column="75" selection-end-line="41" selection-end-column="75" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vps/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vps/tests/test_status_vps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
