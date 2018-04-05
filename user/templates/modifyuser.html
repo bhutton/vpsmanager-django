@@ -7,11 +7,22 @@
 
     <form name="vps" method="POST" class="form-horizontal">
         <div class="form-group row">
-            <label for="name" class="col-sm-4 control-label">Name</label>
+            <label for="name" class="col-sm-4 control-label">Username</label>
             <div class="col-sm-7">
-                <input class="form-control" name="item_name" id="id_item_name" placeholder="Enter User Name"
+                <input type="hidden" name="id" value="{{ item.id }}">
+                <input class="form-control" name="username" id="id_item_name" placeholder="Enter User Name"
+                       value="{{ item.username }}"
                        required onchange="return validateVPSName()"/>
+
                 <p id="valName"></p></td>
+            </div>
+            <label for="name" class="col-sm-4 control-label">Password</label>
+            <div class="col-sm-7">
+                <input class="form-control" type="password" name="password">
+            </div>
+            <label for="name" class="col-sm-4 control-label">Again</label>
+            <div class="col-sm-7">
+                <input class="form-control" type="password" name="again">
             </div>
         </div>
 

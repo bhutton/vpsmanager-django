@@ -12,6 +12,10 @@ class HomePageTest(TestCase):
     def test_home_page_renders_homepage(self):
         response = self.client.get('/')
         self.assertTemplateUsed(response, 'home.html')
+        self.assertIn('Home', response.content.decode())
+        self.assertIn('User Management', response.content.decode())
+        self.assertIn('/', response.content.decode())
+        self.assertIn('/user', response.content.decode())
 
     def test_home_page_returns_correct_html(self):
         request = HttpRequest()

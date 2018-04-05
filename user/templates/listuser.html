@@ -20,7 +20,7 @@
                     {% for line in items %}
                     <tr class="list">
                         <td class="list"><a href="/user/{{ line.id }}" id="{{ line.id }}">{{ line.username }}</a></td>
-                        <td class="list"><a href="/user/delete/{{ line.id }}">Edit</a></td>
+                        <td class="list"><a href="/user/modify/{{ line.id }}">Edit</a></td>
 
                     </tr>
                     {% endfor %}

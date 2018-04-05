@@ -26,10 +26,21 @@ class UserCreateTest(TestCase):
 
 
     def test_modify_user_renders_form(self):
-        response = self.client.get('/user/modify/')
+        response = self.client.post('/user/create/',
+                                    data={'username': 'fredbloggs', 'password': 'abc123'})
+        response = self.client.get('/user/modify/1/')
         self.assertTemplateUsed(response, 'modifyuser.html')
         expected_html = render_to_string('modifyuser.html')
         self.assertIn('User Name', response.content.decode())
+        self.assertIn('fredbloggs', response.content.decode())
+        self.assertIn('Username', response.content.decode())
+        self.assertIn('Password', response.content.decode())
+        self.assertIn('Again', response.content.decode())
+
+        response = self.client.post('/user/modify/1',
+                                    data={'username': 'fredbloggs2', 'password': 'abc123'})
+        response = self.client.get('/user/modify/1/')
+        self.assertIn('fredbloggs2', response.content.decode())
 
 class UserModelTest(TestCase):
     def populate_users(self):

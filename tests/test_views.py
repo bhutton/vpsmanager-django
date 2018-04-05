@@ -13,7 +13,7 @@ class HomePageTest(TestCase):
         self.assertTemplateUsed(response, 'home.html')
         self.assertIn('VPS Manager', response.content.decode())
         self.assertIn('Home', response.content.decode())
-        self.assertIn('Users', response.content.decode())
+        self.assertIn('User Management', response.content.decode())
 
 
 class CreateVPSTest(TestCase):
@@ -218,7 +218,11 @@ class UserTest(TestCase):
         self.assertIn('User Name', response.content.decode())
 
     def test_modify_user_renders_form(self):
-        response = self.client.get('/user/modify/')
+        first_item = User()
+        first_item.username = 'fredbloggs'
+        first_item.description = 'abc123'
+        first_item.save()
+        response = self.client.get('/user/modify/1')
         self.assertTemplateUsed(response, 'modifyuser.html')
 
     def test_user_view(self):
@@ -242,4 +246,5 @@ class UserTest(TestCase):
         self.assertTemplateUsed(response, 'listuser.html')
         self.assertIn('fredbloggs', response.content.decode())
         self.assertIn('Edit', response.content.decode())
+        self.assertIn('/user/modify/1', response.content.decode())
 

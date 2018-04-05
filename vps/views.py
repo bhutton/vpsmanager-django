@@ -53,7 +53,6 @@ def create_vps(request):
 
 def modify_vps(request,id):
     if request.method == 'POST':
-        # new_item_id = id
         new_item_name = request.POST['item_name']
         new_item_description = request.POST['item_description']
         new_item_image = request.POST['item_image']
