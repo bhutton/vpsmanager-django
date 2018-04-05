@@ -221,7 +221,7 @@ class UserTest(TestCase):
         response = self.client.get('/user/modify/')
         self.assertTemplateUsed(response, 'modifyuser.html')
 
-    def test_vps_view_instance(self):
+    def test_user_view(self):
         first_item = User()
         first_item.name = 'fredbloggs'
         first_item.description = 'abc123'
@@ -229,6 +229,17 @@ class UserTest(TestCase):
 
         response = self.client.get('/user/1/')
         self.assertEquals(response.status_code, 200)
-        # self.assertTemplateUsed('viewvps.html')
-        # self.assertContains(response,'VPS Manager')
+        self.assertTemplateUsed(response, 'viewuser.html')
+        # self.assertIn('fredbloggs', response.content.decode())
+
+    def test_user_list(self):
+        first_item = User()
+        first_item.username = 'fredbloggs'
+        first_item.description = 'abc123'
+        first_item.save()
+
+        response = self.client.get('/user/')
+        self.assertTemplateUsed(response, 'listuser.html')
+        self.assertIn('fredbloggs', response.content.decode())
+        self.assertIn('Edit', response.content.decode())
 
