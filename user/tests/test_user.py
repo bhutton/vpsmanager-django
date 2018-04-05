@@ -27,7 +27,10 @@ class UserCreateTest(TestCase):
 
     def test_modify_user_renders_form(self):
         response = self.client.post('/user/create/',
-                                    data={'username': 'fredbloggs', 'password': 'abc123'})
+                                    data={'username': 'fredbloggs', 'password': 'abc123'}, follow=True)
+
+        self.assertIn('fredbloggs', response.content.decode())
+        self.assertTemplateUsed(response, 'listuser.html')
         response = self.client.get('/user/modify/1/')
         self.assertTemplateUsed(response, 'modifyuser.html')
         expected_html = render_to_string('modifyuser.html')

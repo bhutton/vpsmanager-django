@@ -11,6 +11,8 @@
                 <label>Deleted</label>
             {% endif %}
 
+            <a href="/user/create">Create</a>
+
             {% if items %}
             <table width="100%">
                 <thead>
@@ -24,13 +26,14 @@
                     <tr class="list">
                         <td class="list"><a href="/user/{{ line.id }}" id="{{ line.id }}">{{ line.username }}</a></td>
                         <td class="list"><a href="/user/modify/{{ line.id }}">Edit</a></td>
+                    <td class="list"><a href="/user/delete/{{ line.id }}">Delete</a></td>
 
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
             {% else %}
-            <div class="message">No machines have been created</div>
+            <div class="message">No users have been created</div>
             {% endif %}
 
     </div>

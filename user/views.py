@@ -7,7 +7,7 @@ def create_user(request):
         new_username = request.POST['username']
         new_password = request.POST['password']
         User.objects.create(username=new_username, password=new_password)
-        return redirect('/')
+        return redirect('/user/')
 
     return render(request, 'createuser.html')
 

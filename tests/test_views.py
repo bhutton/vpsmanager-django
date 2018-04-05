@@ -237,6 +237,10 @@ class UserTest(TestCase):
         # self.assertIn('fredbloggs', response.content.decode())
 
     def test_user_list(self):
+        response = self.client.get('/user/')
+        self.assertIn('No users have been created', response.content.decode())
+        self.assertIn('Create', response.content.decode())
+
         first_item = User()
         first_item.username = 'fredbloggs'
         first_item.description = 'abc123'
@@ -246,5 +250,6 @@ class UserTest(TestCase):
         self.assertTemplateUsed(response, 'listuser.html')
         self.assertIn('fredbloggs', response.content.decode())
         self.assertIn('Edit', response.content.decode())
+        self.assertIn('Delete', response.content.decode())
         self.assertIn('/user/modify/1', response.content.decode())
 
