@@ -7,6 +7,9 @@
     <div class="vpsDetails">
 
       <div class="row marketing">
+            {%  if deleted == "yes" %}
+                <label>Deleted</label>
+            {% endif %}
 
             {% if items %}
             <table width="100%">

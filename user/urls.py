@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^(\d+)/$', views.view_user, name='view_user'),
     url(r'^create/', views.create_user, name='createuser'),
     url(r'^modify/([0-9]+)', views.modify_user, name='modifyuser'),
+    url(r'^delete/([0-9]+)', views.delete_user, name='modifyuser'),
 ]

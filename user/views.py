@@ -2,10 +2,6 @@ from django.shortcuts import redirect, render
 
 from user.models import User
 
-CHECKBOX_MAPPING = {'on': True,
-                    'off': False, }
-
-
 def create_user(request):
     if request.method == 'POST':
         new_username = request.POST['username']
@@ -36,6 +32,16 @@ def modify_user(request, id):
 def view_user(request, username):
     return render(request, 'viewuser.html')
 
+
 def list_user(request):
     items = User.objects.all()
     return render(request, 'listuser.html', {'items': items})
+
+
+def delete_user(request, id):
+    if int(id) > 0:
+        saved_items = User.objects.get(pk=id)
+        saved_items.delete()
+
+    items = User.objects.all()
+    return render(request, 'listuser.html', {'items': items, 'deleted': 'yes'})

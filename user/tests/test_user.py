@@ -35,12 +35,23 @@ class UserCreateTest(TestCase):
         self.assertIn('fredbloggs', response.content.decode())
         self.assertIn('Username', response.content.decode())
         self.assertIn('Password', response.content.decode())
-        self.assertIn('Again', response.content.decode())
 
         response = self.client.post('/user/modify/1',
                                     data={'username': 'fredbloggs2', 'password': 'abc123'})
         response = self.client.get('/user/modify/1/')
         self.assertIn('fredbloggs2', response.content.decode())
+
+    def test_create_and_delete_user(self):
+        self.client.post('/user/create/',
+                                    data={'username': 'fredbloggs', 'password': 'abc123'})
+        response = self.client.get('/user/')
+        self.assertIn('fredbloggs', response.content.decode())
+        response = self.client.post('/user/delete/1')
+        self.assertIn('Deleted', response.content.decode())
+        self.assertNotIn('fredbloggs', response.content.decode())
+
+
+
 
 class UserModelTest(TestCase):
     def populate_users(self):
