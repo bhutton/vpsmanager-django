@@ -249,7 +249,7 @@ class UserTest(TestCase):
         response = self.client.get('/user/')
         self.assertTemplateUsed(response, 'listuser.html')
         self.assertIn('fredbloggs', response.content.decode())
-        self.assertIn('Edit', response.content.decode())
-        self.assertIn('Delete', response.content.decode())
+        self.assertIn('edit', response.content.decode())
+        self.assertIn('delete', response.content.decode())
         self.assertIn('/user/modify/1', response.content.decode())
 
