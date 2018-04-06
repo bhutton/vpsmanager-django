@@ -209,47 +209,4 @@ class CreateVPSTest(TestCase):
         return first_item
 
 
-class UserTest(TestCase):
-
-    def test_create_user_renders_form(self):
-        response = self.client.get('/user/create/')
-        self.assertTemplateUsed(response, 'createuser.html')
-        expected_html = render_to_string('createuser.html')
-        self.assertIn('User Name', response.content.decode())
-
-    def test_modify_user_renders_form(self):
-        first_item = User()
-        first_item.username = 'fredbloggs'
-        first_item.description = 'abc123'
-        first_item.save()
-        response = self.client.get('/user/modify/1')
-        self.assertTemplateUsed(response, 'modifyuser.html')
-
-    def test_user_view(self):
-        first_item = User()
-        first_item.name = 'fredbloggs'
-        first_item.description = 'abc123'
-        first_item.save()
-
-        response = self.client.get('/user/1/')
-        self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed(response, 'viewuser.html')
-        # self.assertIn('fredbloggs', response.content.decode())
-
-    def test_user_list(self):
-        response = self.client.get('/user/')
-        self.assertIn('No users have been created', response.content.decode())
-        self.assertIn('Create', response.content.decode())
-
-        first_item = User()
-        first_item.username = 'fredbloggs'
-        first_item.description = 'abc123'
-        first_item.save()
-
-        response = self.client.get('/user/')
-        self.assertTemplateUsed(response, 'listuser.html')
-        self.assertIn('fredbloggs', response.content.decode())
-        self.assertIn('edit', response.content.decode())
-        self.assertIn('delete', response.content.decode())
-        self.assertIn('/user/modify/1', response.content.decode())
 

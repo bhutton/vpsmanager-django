@@ -10,8 +10,16 @@
             <label for="name" class="col-sm-4 control-label">Username</label>
             <div class="col-sm-7">
                 <input type="hidden" name="id" value="{{ item.id }}">
-                <input class="form-control" name="username" id="id_item_name" placeholder="Enter User Name"
-                       value="{{ item.username }}"
+                <input class="form-control" name="name" id="id_item_name" placeholder="Enter User Name"
+                       value="{{ item.name }}"
+                       required onchange="return validateVPSName()"/>
+
+                <p id="valName"></p></td>
+            </div>
+            <label for="name" class="col-sm-4 control-label">Email</label>
+            <div class="col-sm-7">
+                <input class="form-control" name="name" id="id_item_name" placeholder="Enter Email Address"
+                       value="{{ item.email }}"
                        required onchange="return validateVPSName()"/>
 
                 <p id="valName"></p></td>

@@ -5,7 +5,7 @@
     <div class="vpsDetails">
         <nav>
           <ul class="nav nav-pills pull-left">
-                <li role="presentation"><a href="/user/create">Create VPS</a>
+                <li role="presentation"><a href="/user/create">Create User</a>
           </ul>
         </nav>
 
@@ -19,6 +19,7 @@
                 <thead>
                     <tr class="title">
                         <th>Name</th>
+                        <th>Email</th>
                         <th width="80px">Modify</th>
                     </tr>
                 </thead>
@@ -26,7 +27,8 @@
                 <tbody>
                     {% for line in items %}
                     <tr class="list">
-                        <td class="list">{{ line.username }}</td>
+                        <td class="list">{{ line.name }}</td>
+                        <td class="list">{{ line.email }}</td>
                         <td class="list" align="center"><a href="/user/modify/{{ line.id }}"><i class="material-icons md-18">edit</i></a>
                         <a href="/user/delete/{{ line.id }}" onclick="return confirm('Are you sure you want to delete this server?')"><i class="material-icons md-18">delete</i></a></td>
                     </tr>
